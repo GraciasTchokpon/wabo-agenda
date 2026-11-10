@@ -1,0 +1,94 @@
+# Sources suivies par le robot.
+# kind : rss (flux RSS/Atom) ou site (page web lue entièrement).
+# reliability : 0 à 1. Au-dessus de 0.85, une extraction très sûre pourra être publiée sans relecture (désactivé par défaut).
+# Avant d'activer une source : vérifier ses conditions d'utilisation et son fichier robots.txt.
+# Les adresses de flux marquées « à vérifier » suivent la convention WordPress (/feed/) et doivent être testées.
+
+sources:
+  - name: Matin Libre
+    kind: rss
+    url: https://matinlibre.com/feed/
+    reliability: 0.6
+    active: true
+
+  - name: Benin Web TV
+    kind: rss
+    url: https://beninwebtv.bj/feed/        # à vérifier
+    reliability: 0.6
+    active: true
+
+  - name: Institut français du Bénin
+    kind: rss
+    url: https://if-benin.com/feed/         # à vérifier
+    reliability: 0.8
+    active: true
+
+  - name: Gouvernement – événements
+    kind: site
+    url: https://www.gouv.bj/evenements/
+    reliability: 0.9
+    active: true
+
+  - name: Financial Afrik – agenda
+    kind: site
+    url: https://www.financialafrik.com/agenda/
+    reliability: 0.7
+    active: false   # vérifier la page qui liste les événements au Bénin
+
+  - name: Bénin Tourisme
+    kind: site
+    url: https://benin.bj/en
+    reliability: 0.9
+    active: true
+
+  # --- Instagram : comptes professionnels ou créateurs (API Business Discovery) ---
+  # Ajoutez ici les comptes des lieux, promoteurs, artistes et festivals. Les comptes personnels ne sont pas lisibles.
+  # Vérifiez chaque nom d'utilisateur sur Instagram avant de l'activer.
+  - name: Instagram – Concerto Centre Culturel
+    kind: instagram
+    username: concerto_spectacle        # indiqué sur leur page Facebook
+    reliability: 0.7
+    active: false
+  - name: Instagram – e-Event
+    kind: instagram
+    username: myappevent                # indiqué sur leur page Facebook
+    reliability: 0.6
+    active: false
+  - name: Instagram – Benin International Musical
+    kind: instagram
+    username: benin_international_musical
+    reliability: 0.7
+    active: false
+
+  # --- Instagram : hashtags (validation Meta requise, 30 hashtags différents par 7 jours) ---
+  - name: Instagram #cotonou
+    kind: instagram_hashtag
+    tag: cotonou
+    reliability: 0.4
+    active: false
+
+  # --- Facebook : pages publiques (autorisation « Page Public Content Access » requise) ---
+  - name: Facebook – Concerto Centre Culturel
+    kind: facebook_page
+    page: concerto.centre.culturel
+    reliability: 0.7
+    active: false
+
+# Filtre pour les flux d'actualité : on ne garde que les articles qui parlent d'un événement.
+keywords:
+  - festival
+  - concert
+  - spectacle
+  - soirée
+  - conférence
+  - forum
+  - salon
+  - atelier
+  - formation
+  - lancement
+  - gala
+  - exposition
+  - tournoi
+  - marathon
+  - célébration
+  - édition

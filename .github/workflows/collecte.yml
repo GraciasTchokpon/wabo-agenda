@@ -1,0 +1,30 @@
+name: Collecte quotidienne
+
+on:
+  # Collecte automatique désactivée tant que Supabase et les clés ne sont pas configurés
+  # (sinon GitHub enverrait un e-mail d'échec chaque jour). Pour l'activer, retirer les « # » :
+  # schedule:
+  #   - cron: "17 5 * * *"   # tous les jours vers 6 h 17 à Cotonou (5 h 17 UTC)
+  workflow_dispatch: {}     # bouton « Run workflow » pour lancer à la main
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: collector
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: collector/requirements.txt
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q tests
+      - run: python -m wabo_collector all
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WABO_LLM_MODEL: ${{ vars.WABO_LLM_MODEL || 'claude-haiku-5-5' }}

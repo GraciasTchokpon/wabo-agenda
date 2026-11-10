@@ -1,0 +1,13 @@
+# Netlify publie le dossier site/ tel quel (aucune compilation).
+# Pour ajouter des événements : modifier data/events.json puis lancer
+#   python3 scripts/build_site.py
+[build]
+  base = ""
+  publish = "site"
+  command = "echo 'Site statique, rien à compiler'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

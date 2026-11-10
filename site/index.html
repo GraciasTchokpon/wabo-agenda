@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wabo – Agenda Bénin</title>
+<meta name="description" content="Wabo : tous les événements du Bénin au même endroit. Concerts, festivals, conférences, soirées, avec dates, lieux et liens d'inscription.">
+<meta name="theme-color" content="#008751">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Wabo – Agenda Bénin">
+<meta property="og:title" content="Wabo – Agenda Bénin">
+<meta property="og:description" content="Tous les événements du Bénin au même endroit : concerts, festivals, conférences, soirées. Dates, lieux et liens d'inscription.">
+<meta property="og:url" content="https://wabo-agenda.netlify.app/">
+<meta property="og:image" content="https://wabo-agenda.netlify.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect x='26' y='0' width='10' height='21' rx='5' fill='%231C1A17'/%3E%3Crect x='61' y='0' width='10' height='21' rx='5' fill='%231C1A17'/%3E%3Crect x='6' y='11' width='84' height='79' rx='20' fill='%231C1A17'/%3E%3Crect x='21' y='26' width='16' height='7' rx='3.5' fill='%23008751'/%3E%3Crect x='40' y='26' width='16' height='7' rx='3.5' fill='%23FCD116'/%3E%3Crect x='59' y='26' width='16' height='7' rx='3.5' fill='%23E8112D'/%3E%3Ctext x='48' y='79' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='44' fill='%23fff'%3EW%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --green:#008751; --green-dark:#006B3F; --green-soft:#E3F2EA;
+  --yellow:#FCD116; --yellow-soft:#FEF3C7;
+  --red:#E8112D; --red-dark:#B30E25; --red-soft:#FCE2E5;
+  --ink:#1C1A17; --muted:#5E5850; --line:#E6DFD3; --bg:#FAF7F2; --card:#FFFFFF;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:var(--green-dark)}
+a:hover{color:var(--ink)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.flag{display:flex;height:5px}
+.flag i{flex:1}
+.flag i:nth-child(1){background:var(--green)}
+.flag i:nth-child(2){background:var(--yellow)}
+.flag i:nth-child(3){background:var(--red)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:26px;letter-spacing:-.5px}
+.brand small{font-size:13px;font-weight:600;color:var(--muted);padding-top:5px}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap}
+nav.tabs a{display:flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:12px;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px}
+nav.tabs a[aria-current="page"]{background:var(--green-soft);color:var(--green-dark)}
+nav.tabs a:hover{color:var(--ink)}
+.hero{padding:28px 0 8px}
+.hero h1{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:clamp(28px,5vw,44px);line-height:1.08;letter-spacing:-1px;margin:0 0 8px}
+.hero h1 span{color:var(--green)}
+.hero p{margin:0;color:var(--muted);font-size:16px;max-width:640px}
+.view{padding:16px 0 48px}
+.view[hidden]{display:none}
+.filters{display:flex;flex-direction:column;gap:12px;margin:12px 0 20px}
+.search{display:flex;align-items:center;gap:10px;height:50px;padding:0 14px;background:var(--card);border:1px solid #DDD5C8;border-radius:14px;max-width:560px}
+.search input{flex:1;border:0;outline:none;background:transparent;font-size:16px;min-width:0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;height:40px;padding:0 16px;border-radius:20px;border:1px solid #DDD5C8;background:var(--card);font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips.small .chip{height:36px;border-radius:10px;padding:0 12px;font-size:13px}
+.resultbar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.resultbar h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:20px;margin:0}
+.resultbar span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{display:flex;gap:14px;padding:14px;border-radius:var(--radius);background:var(--card);border:1px solid #ECE5DA;text-align:left;cursor:pointer;width:100%;transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--green);transform:translateY(-1px)}
+.tile{flex:0 0 auto;width:66px;min-height:76px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 4px}
+.tile b{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:26px;line-height:1}
+.tile small{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-top:3px}
+.tile em{font-style:normal;font-size:10px;font-weight:600;margin-top:2px;color:var(--muted)}
+.cbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.cat{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--green-dark)}
+.ctitle{font-size:16px;font-weight:600;line-height:1.28}
+.cmeta{font-size:13px;color:var(--muted)}
+.cprice{font-size:13px;font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;width:fit-content}
+.badge.tbc{background:var(--yellow-soft);color:#713F12}
+.badge.live{background:var(--red-soft);color:var(--red-dark)}
+.empty{padding:28px 16px;border:1px dashed #CFC6B8;border-radius:var(--radius);text-align:center;color:var(--muted)}
+/* calendar */
+.cal-layout{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.cal{flex:1 1 360px;max-width:520px;background:var(--card);border:1px solid #ECE5DA;border-radius:20px;padding:16px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-head h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:20px;margin:0;text-transform:capitalize}
+.round{width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.round:disabled{opacity:.35;cursor:default}
+.dow,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.dow span{text-align:center;font-size:12px;font-weight:700;color:var(--muted);padding:4px 0}
+.day{height:50px;border-radius:12px;border:2px solid transparent;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:14px;padding:0}
+.day:hover{background:var(--bg)}
+.day.has{font-weight:700}
+.day.today{border-color:var(--yellow)}
+.day.past{color:#A39C92}
+.day[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.dots{display:flex;gap:2px;height:5px}
+.dots i{width:5px;height:5px;border-radius:3px;background:var(--red)}
+.day[aria-pressed="true"] .dots i{background:#fff}
+.legend{display:flex;gap:16px;justify-content:center;font-size:12px;color:var(--muted);margin-top:10px}
+.legend span{display:flex;align-items:center;gap:6px}
+.cal-side{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.cal-side h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:20px;margin:0}
+.tbc-box{background:var(--yellow-soft);border-radius:14px;padding:12px 14px;font-size:14px}
+.tbc-box button{background:none;border:0;padding:0;color:var(--ink);font-weight:600;text-decoration:underline;cursor:pointer}
+/* dialog */
+.overlay{position:fixed;inset:0;background:rgba(28,26,23,.55);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.overlay[hidden]{display:none}
+.sheet{background:var(--bg);width:100%;max-width:640px;max-height:92vh;overflow-y:auto;border-radius:22px 22px 0 0}
+@media(min-width:720px){.overlay{align-items:center}.sheet{border-radius:22px}}
+.poster{position:relative;padding:56px 24px 22px;display:flex;flex-direction:column;gap:6px}
+.poster h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:clamp(26px,5vw,34px);line-height:1.05;margin:0;letter-spacing:-.6px}
+.poster .close{position:absolute;top:12px;right:12px;background:#fff;border:0}
+.sbody{padding:18px 20px 24px;display:flex;flex-direction:column;gap:16px}
+.facts{background:var(--card);border:1px solid #ECE5DA;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.fact{display:flex;gap:12px;align-items:flex-start}
+.fact svg{flex:0 0 auto;margin-top:1px}
+.fact b{display:block;font-size:15px}
+.fact span{font-size:13px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);font-weight:600;font-size:14px;text-decoration:none;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+.btn.primary:hover{background:var(--green-dark);color:#fff}
+.btn:hover{border-color:var(--ink)}
+.src{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px}
+.linkbtn{background:none;border:0;padding:0;color:var(--red-dark);font-weight:600;text-decoration:underline;cursor:pointer;font-size:13px;width:fit-content;min-height:24px}
+/* forms */
+.formcard{max-width:640px;background:var(--card);border:1px solid #ECE5DA;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.wa-card{max-width:640px;background:var(--ink);color:#fff;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.wa-card .k{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--yellow)}
+.wa-card h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:22px;margin:0}
+.wa-card p{margin:0;color:#E7E1D8;font-size:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{min-height:46px;padding:10px 12px;border-radius:12px;border:1px solid #DDD5C8;background:#fff;font-size:15px}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+.msgbox{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px}
+.note{font-size:13px;color:var(--muted)}
+.prose{max-width:680px}
+.prose h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:22px;margin:24px 0 8px}
+.prose p,.prose li{color:#3D3832}
+@media(max-width:600px){.long{display:none}nav.tabs a{padding:0 10px}.topbar{padding:10px 0}}
+footer{border-top:1px solid var(--line);padding:20px 0 32px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-size:14px;z-index:30}
+.toast[hidden]{display:none}
+</style>
+</head>
+<body>
+<div class="flag" aria-hidden="true"><i></i><i></i><i></i></div>
+<header class="top">
+  <div class="wrap topbar">
+    <a class="brand" href="#agenda" aria-label="Wabo, Agenda Bénin – accueil">
+      <svg width="30" height="21" viewBox="0 0 26 18" aria-hidden="true"><rect x="0" y="0" width="10" height="18" rx="2" fill="#008751"/><rect x="10" y="0" width="16" height="9" fill="#FCD116"/><rect x="10" y="9" width="16" height="9" fill="#E8112D"/></svg>
+      <b>Wabo</b><small>Agenda Bénin</small>
+    </a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#agenda" data-tab="agenda">Agenda</a>
+      <a href="#calendrier" data-tab="calendrier">Calendrier</a>
+      <a href="#proposer" data-tab="proposer">Proposer<span class="long">&nbsp;un événement</span></a>
+      <a href="#a-propos" data-tab="a-propos">À propos</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Que faire au <span>Bénin</span> ?</h1>
+    <p id="heroText">Concerts, festivals, conférences, soirées : tous les événements au même endroit, avec les dates, les lieux et les liens pour s'inscrire.</p>
+  </section>
+
+  <section id="view-agenda" class="view" aria-labelledby="agendaTitle">
+    <div class="filters">
+      <label class="sr" for="q">Rechercher un événement</label>
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E5850" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Festival, concert, Ouidah, fintech…" autocomplete="off">
+      </div>
+      <div class="chips" id="periodChips" role="group" aria-label="Période"></div>
+      <div class="chips small" id="catChips" role="group" aria-label="Catégorie"></div>
+      <div class="chips small" id="cityChips" role="group" aria-label="Ville"></div>
+    </div>
+    <div class="resultbar"><h2 id="agendaTitle">À venir</h2><span id="count"></span></div>
+    <div class="grid" id="list"></div>
+  </section>
+
+  <section id="view-calendrier" class="view" hidden aria-labelledby="calTitle">
+    <div class="cal-layout">
+      <div class="cal">
+        <div class="cal-head">
+          <button class="round" id="prevM" aria-label="Mois précédent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <h2 id="calTitle" aria-live="polite"></h2>
+          <button class="round" id="nextM" aria-label="Mois suivant"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="dow" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        <div class="days" id="days"></div>
+        <div class="legend"><span><i style="width:12px;height:12px;border-radius:4px;border:2px solid var(--yellow);display:inline-block"></i>Aujourd'hui</span><span><i style="width:6px;height:6px;border-radius:3px;background:var(--red);display:inline-block"></i>Événement</span></div>
+      </div>
+      <div class="cal-side">
+        <h2 id="dayTitle"></h2>
+        <div id="dayList" class="grid" style="grid-template-columns:1fr"></div>
+        <div id="tbcBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-proposer" class="view" hidden aria-labelledby="propTitle">
+    <div class="wa-card">
+      <span class="k">Le plus rapide</span>
+      <h2 id="propTitle">Envoyez simplement l'affiche sur WhatsApp</h2>
+      <p id="waText"></p>
+      <div id="waAction"></div>
+    </div>
+    <form class="formcard" id="propForm" novalidate>
+      <p class="note" style="margin:0">Ou remplissez ce formulaire : il prépare un message prêt à envoyer. Tous les événements ouverts au public sont les bienvenus ; chaque proposition est vérifiée avant publication.</p>
+      <div class="field"><label for="f-title">Nom de l'événement *</label><input id="f-title" required placeholder="Ex. : Concert live jazz et afrobeat"></div>
+      <div class="row2">
+        <div class="field"><label for="f-date">Date *</label><input id="f-date" type="date" required></div>
+        <div class="field"><label for="f-time">Heure</label><input id="f-time" type="time"></div>
+      </div>
+      <div class="field"><label for="f-place">Lieu (nom, quartier, ville) *</label><input id="f-place" required placeholder="Ex. : Institut français, Cotonou"></div>
+      <div class="row2">
+        <div class="field"><label for="f-cat">Catégorie</label><select id="f-cat"></select></div>
+        <div class="field"><label for="f-price">Prix</label><input id="f-price" placeholder="Gratuit, 5 000 FCFA…"></div>
+      </div>
+      <div class="field"><label for="f-link">Lien d'inscription ou contact</label><input id="f-link" placeholder="https://… ou numéro"></div>
+      <div class="field"><label for="f-desc">Description ou remarque</label><textarea id="f-desc" rows="3"></textarea></div>
+      <button class="btn primary" type="submit">Préparer le message</button>
+      <div id="propResult" hidden>
+        <p class="note" style="margin:0 0 8px">Votre message est prêt. Joignez l'affiche si vous l'avez.</p>
+        <div class="msgbox" id="propMsg"></div>
+        <div class="actions" style="margin-top:10px" id="propActions"></div>
+      </div>
+    </form>
+  </section>
+
+  <section id="view-a-propos" class="view prose" hidden>
+    <h2 style="margin-top:0">Wabo, c'est quoi ?</h2>
+    <p>Wabo rassemble les événements qui se passent au Bénin (concerts, festivals, conférences, soirées, ateliers, lancements) pour qu'on trouve en quelques secondes quoi faire cette semaine, ce week-end ou en décembre.</p>
+    <h2>D'où viennent les événements ?</h2>
+    <p>Nous suivons les sites des organisateurs et des lieux, la presse en ligne et les réseaux sociaux, et nous recevons les affiches que vous nous envoyez. Chaque fiche indique sa source et la date de sa dernière vérification.</p>
+    <h2>Une erreur, un événement annulé ?</h2>
+    <p>Utilisez « Signaler une erreur » sur la fiche ou l'onglet « Proposer un événement ». Les dates marquées « à confirmer » n'ont pas encore été publiées par les organisateurs.</p>
+    <h2>Organisateurs</h2>
+    <p>Publier un événement sur Wabo est gratuit. Envoyez l'affiche et le lien d'inscription : nous nous occupons du reste.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Wabo – Agenda Bénin · Données vérifiées le <span id="updated"></span></span>
+    <span>Les informations viennent des organisateurs et de la presse : vérifiez auprès d'eux avant de vous déplacer.</span>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="dTitle" id="sheet"></div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* ===== Configuration ===== */
+const WABO_WHATSAPP = "";           // numéro WhatsApp de Wabo au format international sans + (ex. 22900000000). Vide = pas encore activé.
+// Lien public du site, ajouté dans les messages partagés.
+// Sur un vrai hébergement (Netlify, GitHub Pages, nom de domaine…), l'adresse est détectée toute seule.
+const SITE_URL = (/^https?:$/.test(location.protocol) && !/claude|anthropic|usercontent/i.test(location.hostname) && location.hostname !== "localhost")
+  ? location.origin + location.pathname
+  : "https://wabo-agenda.netlify.app/";
+const UPDATED = "10 novembre 2026";
+const EVENTS = [{"id": "festival-sica-2026", "title": "Festival SICA – 20e édition", "category": "festival", "start": "2026-11-09", "end": "2026-11-15", "city": "Cotonou", "place": "Cotonou – soirée de gala au Palais des Congrès", "price": "Non communiqué", "free": false, "tbc": false, "description": "Le Festival des stars de l'intégration culturelle africaine revient dans sa ville de naissance pour ses 25 ans. Vingt-six pays sont annoncés, avec des compétitions artistiques, des rencontres professionnelles et une soirée de gala au Palais des Congrès.", "link": null, "sources": [{"label": "Matin Libre, 6 nov. 2026", "url": "https://matinlibre.com/2026/11/06/festival-sica-apres-cinq-editions-itinerantes-le-rendez-vous-revient-a-cotonou/"}]}, {"id": "sima-2026", "title": "SIMA 2026 – Salon des industries musicales d'Afrique francophone", "category": "conference", "start": "2026-11-12", "end": "2026-11-13", "city": "Cotonou", "place": "Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Deux journées professionnelles de panels et de rencontres B2B sur l'intelligence artificielle, le droit d'auteur, la mobilité des artistes et le financement de la musique africaine. Artistes annoncés : A'Salfo, Tiakola, Suspect 95, Hiro et Singuila.", "link": null, "sources": [{"label": "Capmad", "url": "https://www.capmad.com/article/sima-2026-cotonou-accueille-la-troisieme-edition-du-salon-musical-francophone-les-12-et-13-novembre"}, {"label": "SenePlus", "url": "https://www.seneplus.com/article/cotonou-accueillera-la-3e-edition-du-sima-en-novembre-2026"}, {"label": "Afrimag", "url": "https://afrimag.net/benin-sima-2026-cotonou-industrie-musicale-tiakola-angelo-gopee/"}]}, {"id": "art-design-architecture-forum-2026", "title": "Art, Design & Architecture Forum – Cotonou Art Week", "category": "culture", "start": "2026-11-13", "end": "2026-11-13", "city": "Cotonou", "place": "Golden Tulip Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Temps fort de la Cotonou Art Week : un forum consacré à l'art, au design et à l'architecture. La semaine propose aussi des journées portes ouvertes d'ateliers, des visites d'expositions et des rencontres avec des artistes.", "link": null, "sources": [{"label": "Little Africa", "url": "https://littleafrica.fr/little-africa-x-cotonou-art-week-pour-une-immersion-au-coeur-des-scenes-artistiques-et-culturelles-du-benin/"}]}, {"id": "cyber-africa-forum-2026", "title": "Cyber Africa Forum 2026", "category": "conference", "start": "2026-11-16", "end": "2026-11-17", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Sixième édition du forum consacré au numérique, à la cybersécurité et à l'innovation : conférences, tables rondes ministérielles, présentations de solutions et rendez-vous d'affaires. Thème : « Construire la confiance numérique de demain ».", "link": null, "sources": [{"label": "Digital Business Africa", "url": "https://www.digitalbusiness.africa/cyber-africa-forum-2026-cotonou-reunira-1-500-decideurs-autour-de-la-confiance-numerique/"}]}, {"id": "promenade-culinaire-cotonou-2026", "title": "La Promenade Culinaire de Cotonou", "category": "gastronomie", "start": "2026-11-20", "end": "2026-11-29", "city": "Cotonou", "place": "Restaurants participants, Cotonou", "price": "Menus à prix unique, payés sur place", "free": false, "tbc": false, "description": "Pendant dix jours, des restaurants de Cotonou proposent des menus spéciaux à prix unique, entre cuisine locale et internationale. Pas de paiement à l'avance ni, en général, de réservation ; la liste des restaurants est publiée par l'organisateur.", "link": "https://cowafweek.com/cotonou-2026/", "sources": [{"label": "Site de l'organisateur", "url": "https://cowafweek.com/cotonou-2026/"}]}, {"id": "africa-blockchain-crypto-conference-2026", "title": "Africa Blockchain & Crypto Conference 2026", "category": "conference", "start": "2026-11-25", "end": "2026-11-25", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Pré-événement du Next Fintech Forum, consacré aux actifs numériques en Afrique de l'Ouest francophone : régulateurs, institutions financières, fintechs et investisseurs.", "link": null, "sources": [{"label": "Financial Afrik – agenda", "url": "https://www.financialafrik.com/agenda/cotonou-lafrica-blockchain-crypto-conference-2026/"}]}, {"id": "next-fintech-forum-2026", "title": "Next Fintech Forum 2026", "category": "conference", "start": "2026-11-26", "end": "2026-11-27", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Huitième édition du rendez-vous fintech d'Afrique francophone, avec plus de 500 décideurs attendus. Thème : « De l'adoption à la valeur : industrialiser la fintech pour accélérer la croissance de l'UEMOA ».", "link": "https://www.nextfintechforum.com", "sources": [{"label": "Financial Afrik – agenda", "url": "https://www.financialafrik.com/agenda/cotonou-8%E1%B5%89-edition-du-next-fintech-forum-2026/"}]}, {"id": "deborah-lukalu-cotonou-2026", "title": "Déborah Lukalu en concert – festival Soheja", "category": "concert", "start": "2026-12-20", "end": "2026-12-20", "time": "16:00", "city": "Cotonou", "place": "Majestic Cinéma, Wologuèdè, Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Premier concert live au Bénin de la chanteuse gospel congolaise Déborah Lukalu, dans le cadre du festival Soheja. Coorganisé par Jaya Center et Gospel Afrique Francophone.", "link": null, "sources": [{"label": "Chrétiens.com", "url": "https://chretiens.com/chretiensdumonde/actualitechretienne/deborah-lukalu-en-concert-a-cotonou-au-benin-le-20-decembre-2026/2026/09/26/13/12/"}]}, {"id": "weloveya-2026", "title": "WeLovEya 2026", "category": "concert", "start": "2026-12-26", "end": "2026-12-27", "city": "Cotonou", "place": "Place de l'Amazone, Cotonou", "price": "Billetterie pas encore annoncée", "free": false, "tbc": false, "description": "Cinquième édition du grand festival afro-urbain et afrobeat de fin d'année. Le rappeur Tiakola est annoncé le 27 décembre ; la programmation complète et la billetterie restent à publier par les organisateurs.", "link": null, "sources": [{"label": "Benin Web TV – dates 2026", "url": "https://beninwebtv.bj/cotonou-weloveya-prevu-les-26-et-27-decembre-pour-sa-cinquieme-edition/"}, {"label": "Benin Web TV – Tiakola", "url": "https://beninwebtv.bj/benin-tiakola-annonce-a-cotonou-le-27-decembre-pour-sa-tournee-africaine/"}]}, {"id": "festival-yetin-2026", "title": "Festival Yêtin 2026", "category": "festival", "start": "2026-12-26", "end": "2026-12-29", "city": "Abomey-Calavi · Kétou · Torri · Cotonou", "place": "Yêtin Bar (Calavi), Chez Félix (Kétou), Sous les Lauriers (Torri), Pura Vida (Cotonou)", "price": "Pass 4 jours en prévente : 8 500 FCFA · 2 000 FCFA par site", "free": false, "tbc": false, "description": "Édition inaugurale d'un festival franco-canado-béninois sur quatre sites : e-gaming, patrimoine vodun, masterclasses afro, arts vivants et conte. Grande soirée de clôture le 29 décembre au Pura Vida, à Cotonou (pass VIP 18 000 FCFA).", "link": "https://art-hum.org/lefestivales.php", "sources": [{"label": "Site du festival", "url": "https://art-hum.org/lefestivales.php"}]}, {"id": "vodun-days-2027", "title": "Vodun Days 2027", "category": "culture", "start": "2027-01-02", "end": "2027-01-09", "city": "Ouidah", "place": "Ouidah", "price": "Non communiqué", "free": false, "tbc": false, "description": "La grande célébration des cultures et spiritualités vodun passe de trois à sept jours : cérémonies, processions et danses traditionnelles à Ouidah. Les jeudi 7 et vendredi 8 janvier 2027 sont chômés et payés.", "link": null, "sources": [{"label": "Benin Web TV", "url": "https://beninwebtv.bj/benin-le-gouvernement-beninois-precise-les-raisons-de-la-prolongation-des-vodun-days-2027-a-ouidah/"}]}, {"id": "cotonou-comedy-festival-2026", "title": "Cotonou Comedy Festival 2026", "category": "humour", "start": "2026-12-01", "end": "2026-12-31", "city": "Cotonou", "place": "Cotonou", "price": "Non communiqué", "free": false, "tbc": true, "dateText": "Décembre 2026 – dates à confirmer", "description": "Deuxième édition du festival international d'humour lancé en 2025 par le gouvernement béninois avec le groupe Montreux Comedy. La première édition avait réuni galas, masterclasses et un village du rire gratuit. Les dates exactes de 2026 ne sont pas encore publiées.", "link": "https://cotonoucomedy.com/", "sources": [{"label": "Gouvernement du Bénin – bilan 2025", "url": "https://www.gouv.bj/doc/905/download"}]}];
+
+/* ===== Données de référence ===== */
+const CATS = {
+  festival:   { label: "Festival",           bg: "#FEF3C7" },
+  concert:    { label: "Concert",            bg: "#FCE2E5" },
+  conference: { label: "Conférence",         bg: "#E3E0F3" },
+  gastronomie:{ label: "Gastronomie",        bg: "#FDE8D7" },
+  humour:     { label: "Humour",             bg: "#D9E4F5" },
+  culture:    { label: "Culture et traditions", bg: "#E3F2EA" },
+  soiree:     { label: "Soirée",             bg: "#FCE2E5" },
+  atelier:    { label: "Atelier",            bg: "#E3F2EA" },
+  sport:      { label: "Sport",              bg: "#FEF3C7" },
+  lancement:  { label: "Lancement",          bg: "#E8E1D3" }
+};
+const MONTHS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const MONTHS_SHORT = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+const DAYS = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+
+/* ===== Dates (tout en jours UTC pour éviter les décalages) ===== */
+const pad = n => (n < 10 ? "0" : "") + n;
+const toKey = d => d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate());
+const fromKey = k => { const [y, m, d] = k.split("-").map(Number); return new Date(Date.UTC(y, m - 1, d)); };
+const addDays = (k, n) => { const d = fromKey(k); d.setUTCDate(d.getUTCDate() + n); return toKey(d); };
+const now = new Date();
+const TODAY = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+const overlaps = (e, a, b) => e.start <= b && e.end >= a;
+
+function dateText(e) {
+  if (e.dateText) return e.dateText;
+  const s = fromKey(e.start), f = fromKey(e.end);
+  const sd = DAYS[s.getUTCDay()] + " " + s.getUTCDate() + " " + MONTHS[s.getUTCMonth()];
+  if (e.start === e.end) return cap(sd) + " " + s.getUTCFullYear() + (e.time ? " · " + e.time : "");
+  const sameMonth = s.getUTCMonth() === f.getUTCMonth() && s.getUTCFullYear() === f.getUTCFullYear();
+  return "Du " + s.getUTCDate() + (sameMonth ? "" : " " + MONTHS[s.getUTCMonth()]) + " au " + f.getUTCDate() + " " + MONTHS[f.getUTCMonth()] + " " + f.getUTCFullYear();
+}
+function shortDates(e) {
+  if (e.tbc) return "Dates à confirmer";
+  const s = fromKey(e.start), f = fromKey(e.end);
+  if (e.start === e.end) return cap(DAYS[s.getUTCDay()]) + " " + s.getUTCDate() + " " + MONTHS_SHORT[s.getUTCMonth()];
+  return s.getUTCDate() + (s.getUTCMonth() === f.getUTCMonth() ? "" : " " + MONTHS_SHORT[s.getUTCMonth()]) + "–" + f.getUTCDate() + " " + MONTHS_SHORT[f.getUTCMonth()];
+}
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+/* ===== Périodes ===== */
+function periods() {
+  const d = fromKey(TODAY).getUTCDay();
+  const sat = d === 0 ? addDays(TODAY, -1) : addDays(TODAY, (6 - d + 7) % 7);
+  const list = [
+    { id: "tout", label: "Tout", a: TODAY, b: "9999-12-31" },
+    { id: "semaine", label: "Cette semaine", a: TODAY, b: addDays(TODAY, 6) },
+    { id: "weekend", label: "Ce week-end", a: sat < TODAY ? TODAY : sat, b: addDays(sat, 1) }
+  ];
+  const t = fromKey(TODAY);
+  for (let i = 0; i < 3; i++) {
+    const y = t.getUTCFullYear() + Math.floor((t.getUTCMonth() + i) / 12), m = (t.getUTCMonth() + i) % 12;
+    const a = y + "-" + pad(m + 1) + "-01", b = toKey(new Date(Date.UTC(y, m + 1, 0)));
+    list.push({ id: "m" + y + pad(m + 1), label: cap(MONTHS[m]) + (y !== t.getUTCFullYear() ? " " + y : ""), a: a < TODAY ? TODAY : a, b });
+  }
+  return list;
+}
+
+/* ===== État ===== */
+const upcoming = EVENTS.filter(e => e.end >= TODAY).sort((x, y) => (x.tbc - y.tbc) || x.start.localeCompare(y.start) || x.end.localeCompare(y.end));
+const state = { q: "", period: "tout", cat: "toutes", city: "toutes", month: null, day: null };
+let lastFocus = null;
+
+/* ===== Rendu : cartes ===== */
+function tile(e) {
+  const c = CATS[e.category] || { bg: "#EEE" };
+  if (e.tbc) { const s = fromKey(e.start); return `<div class="tile" style="background:${c.bg}"><b style="font-size:20px">?</b><small>${MONTHS_SHORT[s.getUTCMonth()]}</small><em>à confirmer</em></div>`; }
+  const shown = e.start < TODAY ? TODAY : e.start, s = fromKey(shown);
+  const multi = e.start !== e.end;
+  return `<div class="tile" style="background:${c.bg}"><b>${s.getUTCDate()}</b><small>${MONTHS_SHORT[s.getUTCMonth()]}</small>${multi ? `<em>${e.start < TODAY ? "en cours" : "→ " + fromKey(e.end).getUTCDate() + " " + MONTHS_SHORT[fromKey(e.end).getUTCMonth()]}</em>` : ""}</div>`;
+}
+function card(e) {
+  const c = CATS[e.category] || { label: e.category };
+  const live = !e.tbc && e.start <= TODAY && e.end >= TODAY;
+  return `<button class="card" data-id="${esc(e.id)}" aria-label="${esc(e.title)}, ${esc(shortDates(e))}, ${esc(e.city)}">
+    ${tile(e)}
+    <div class="cbody">
+      <span class="cat">${esc(c.label)}</span>
+      <span class="ctitle">${esc(e.title)}</span>
+      <span class="cmeta">${esc(shortDates(e))} · ${esc(e.city)}</span>
+      <span class="cprice" style="color:${e.free ? "var(--green-dark)" : "var(--ink)"}">${esc(e.price)}</span>
+      ${live ? '<span class="badge live">En ce moment</span>' : ""}${e.tbc ? '<span class="badge tbc">Dates à confirmer</span>' : ""}
+    </div>
+  </button>`;
+}
+
+function chipRow(el, items, key) {
+  el.innerHTML = items.map(i => `<button class="chip" data-key="${key}" data-val="${esc(i.id)}" aria-pressed="${state[key] === i.id}">${esc(i.label)}</button>`).join("");
+}
+function renderAgenda() {
+  const P = periods();
+  const usedCats = [...new Set(upcoming.map(e => e.category))];
+  const cities = [...new Set(upcoming.flatMap(e => e.city.split(" · ")))].sort();
+  chipRow(document.getElementById("periodChips"), P, "period");
+  chipRow(document.getElementById("catChips"), [{ id: "toutes", label: "Toutes catégories" }, ...usedCats.map(k => ({ id: k, label: (CATS[k] || { label: k }).label }))], "cat");
+  chipRow(document.getElementById("cityChips"), [{ id: "toutes", label: "Toutes les villes" }, ...cities.map(c => ({ id: c, label: c }))], "city");
+  const p = P.find(x => x.id === state.period) || P[0];
+  const q = norm(state.q);
+  const res = upcoming.filter(e =>
+    (p.id === "tout" || (e.tbc ? (p.id.startsWith("m") && overlaps(e, p.a, p.b)) : overlaps(e, p.a, p.b))) &&
+    (state.cat === "toutes" || e.category === state.cat) &&
+    (state.city === "toutes" || e.city.split(" · ").includes(state.city)) &&
+    (!q || norm(e.title + " " + e.place + " " + e.city + " " + (CATS[e.category] || {}).label + " " + e.description).includes(q)));
+  document.getElementById("count").textContent = res.length + (res.length > 1 ? " événements" : " événement");
+  document.getElementById("agendaTitle").textContent = p.id === "tout" ? "À venir" : p.label;
+  document.getElementById("list").innerHTML = res.length ? res.map(card).join("") :
+    `<div class="empty">Aucun événement pour ces filtres.<br><a href="#proposer">Vous en connaissez un ? Proposez-le</a></div>`;
+}
+
+/* ===== Rendu : calendrier ===== */
+function renderCalendar() {
+  if (!state.month) state.month = TODAY.slice(0, 7);
+  if (!state.day) state.day = TODAY;
+  const [y, m] = state.month.split("-").map(Number);
+  document.getElementById("calTitle").textContent = MONTHS[m - 1] + " " + y;
+  const first = new Date(Date.UTC(y, m - 1, 1)).getUTCDay(), offset = (first + 6) % 7;
+  const nd = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  const dated = upcoming.filter(e => !e.tbc);
+  let html = "";
+  for (let i = 0; i < offset; i++) html += "<span></span>";
+  for (let d = 1; d <= nd; d++) {
+    const k = y + "-" + pad(m) + "-" + pad(d);
+    const n = dated.filter(e => e.start <= k && e.end >= k).length;
+    const cls = ["day", n ? "has" : "", k === TODAY ? "today" : "", k < TODAY ? "past" : ""].join(" ");
+    html += `<button class="${cls}" data-day="${k}" aria-pressed="${k === state.day}" aria-label="${d} ${MONTHS[m - 1]}${n ? ", " + n + (n > 1 ? " événements" : " événement") : ""}"><span>${d}</span><span class="dots">${"<i></i>".repeat(Math.min(n, 3))}</span></button>`;
+  }
+  document.getElementById("days").innerHTML = html;
+  const minMonth = TODAY.slice(0, 7);
+  document.getElementById("prevM").disabled = state.month <= minMonth;
+  const sd = fromKey(state.day);
+  document.getElementById("dayTitle").textContent = cap(DAYS[sd.getUTCDay()]) + " " + sd.getUTCDate() + " " + MONTHS[sd.getUTCMonth()];
+  const dl = dated.filter(e => e.start <= state.day && e.end >= state.day);
+  document.getElementById("dayList").innerHTML = dl.length ? dl.map(card).join("") : `<div class="empty">Rien de prévu ce jour-là pour l'instant.<br><a href="#proposer">Vous connaissez un événement ? Proposez-le</a></div>`;
+  const a = state.month + "-01", b = toKey(new Date(Date.UTC(y, m, 0)));
+  const tbc = upcoming.filter(e => e.tbc && overlaps(e, a, b));
+  document.getElementById("tbcBox").innerHTML = tbc.length ? `<div class="tbc-box"><b>Aussi ce mois-ci, dates à confirmer :</b><br>${tbc.map(e => `<button data-id="${esc(e.id)}">${esc(e.title)}</button>`).join("<br>")}</div>` : "";
+}
+
+/* ===== Fiche événement ===== */
+function gcalLink(e) {
+  const p = new URLSearchParams({ action: "TEMPLATE", text: e.title, dates: e.start.replace(/-/g, "") + "/" + addDays(e.end, 1).replace(/-/g, ""), details: e.description + (e.link ? "\n" + e.link : "") + "\nVu sur Wabo – Agenda Bénin", location: e.place + ", Bénin" });
+  return "https://calendar.google.com/calendar/render?" + p.toString();
+}
+function waShare(e) {
+  const t = `${e.title}\n${dateText(e)}\n${e.place}\n${e.link || e.sources[0].url}${SITE_URL ? "\n\nTous les événements du Bénin sur Wabo : " + SITE_URL : "\n\nVu sur Wabo – Agenda Bénin"}`;
+  return "https://wa.me/?text=" + encodeURIComponent(t);
+}
+const ICON = {
+  cal: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#008751" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  pin: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#008751" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  tag: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#008751" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a3 3 0 0 0 0 6v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a3 3 0 0 0 0-6z"/></svg>'
+};
+function openEvent(id, push) {
+  const e = EVENTS.find(x => x.id === id); if (!e) return;
+  const c = CATS[e.category] || { label: e.category, bg: "#EEE" };
+  lastFocus = document.activeElement;
+  const sheet = document.getElementById("sheet");
+  sheet.innerHTML = `
+    <div class="poster" style="background:${c.bg}">
+      <button class="round close" id="closeBtn" aria-label="Fermer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <span class="cat">${esc(c.label)}</span>
+      <h2 id="dTitle">${esc(e.title)}</h2>
+      ${e.tbc ? '<span class="badge tbc">Dates à confirmer</span>' : ""}
+    </div>
+    <div class="sbody">
+      <div class="facts">
+        <div class="fact">${ICON.cal}<div><b>${esc(dateText(e))}</b>${e.tbc ? "<span>Les organisateurs n'ont pas encore publié les dates exactes.</span>" : ""}</div></div>
+        <div class="fact">${ICON.pin}<div><b>${esc(e.place)}</b><span>${esc(e.city)}</span></div></div>
+        <div class="fact">${ICON.tag}<div><b>${esc(e.price)}</b></div></div>
+      </div>
+      <p style="margin:0;color:#3D3832">${esc(e.description)}</p>
+      <div class="actions">
+        ${e.link ? `<a class="btn primary" href="${esc(e.link)}" target="_blank" rel="noopener">Site officiel / inscription ↗</a>` : ""}
+        <a class="btn" href="${esc(waShare(e))}" target="_blank" rel="noopener">Partager sur WhatsApp</a>
+        ${e.tbc ? "" : `<a class="btn" href="${esc(gcalLink(e))}" target="_blank" rel="noopener">Ajouter à Google Agenda</a>`}
+      </div>
+      <div class="src">
+        <span>Source${e.sources.length > 1 ? "s" : ""} : ${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(" · ")}</span>
+        <span>Vérifié par Wabo le ${UPDATED}. Vérifiez auprès de l'organisateur avant de vous déplacer.</span>
+        <button class="linkbtn" id="reportBtn">Signaler une erreur</button>
+      </div>
+    </div>`;
+  document.getElementById("overlay").hidden = false;
+  document.body.style.overflow = "hidden";
+  document.getElementById("closeBtn").onclick = closeEvent;
+  document.getElementById("reportBtn").onclick = () => { closeEvent(); prefillReport(e); };
+  document.getElementById("closeBtn").focus();
+  if (push !== false && location.hash !== "#" + e.id) { try { history.replaceState(null, "", "#" + e.id); } catch (_) {} }
+}
+function closeEvent() {
+  document.getElementById("overlay").hidden = true;
+  document.body.style.overflow = "";
+  if (EVENTS.some(e => "#" + e.id === location.hash)) { try { history.replaceState(null, "", "#" + currentView); } catch (_) {} }
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+/* ===== Proposer ===== */
+function waTo(text) { return "https://wa.me/" + WABO_WHATSAPP + "?text=" + encodeURIComponent(text); }
+function renderProposer() {
+  document.getElementById("waText").textContent = WABO_WHATSAPP
+    ? "Envoyez l'affiche et, si vous l'avez, le lien d'inscription : nous lisons la date, le lieu et le prix, puis nous publions après vérification."
+    : "Le numéro WhatsApp de Wabo sera bientôt activé. En attendant, utilisez le formulaire ci-dessous : il prépare un message que vous pourrez copier.";
+  document.getElementById("waAction").innerHTML = WABO_WHATSAPP
+    ? `<a class="btn" style="background:#fff;color:var(--ink);width:fit-content" href="${esc(waTo("Bonjour Wabo, voici un événement à publier :"))}" target="_blank" rel="noopener">Écrire à Wabo sur WhatsApp</a>` : "";
+  const sel = document.getElementById("f-cat");
+  if (!sel.options.length) sel.innerHTML = Object.entries(CATS).map(([k, v]) => `<option value="${k}">${esc(v.label)}</option>`).join("") + '<option value="autre">Autre</option>';
+}
+function prefillReport(e) {
+  location.hash = "#proposer";
+  setTimeout(() => {
+    document.getElementById("f-title").value = "Correction : " + e.title;
+    document.getElementById("f-desc").value = "Ce qui est inexact sur la fiche : ";
+    document.getElementById("f-desc").focus();
+  }, 50);
+}
+document.getElementById("propForm").addEventListener("submit", ev => {
+  ev.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const missing = ["f-title", "f-date", "f-place"].filter(id => !v(id) && !(id === "f-date" && v("f-title").startsWith("Correction")));
+  if (missing.length) { toast("Merci de remplir les champs marqués *"); document.getElementById(missing[0]).focus(); return; }
+  const cat = document.getElementById("f-cat");
+  const msg = [
+    "Nouvel événement pour Wabo",
+    "Nom : " + v("f-title"),
+    v("f-date") && "Date : " + (() => { const d = fromKey(v("f-date")); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear(); })() + (v("f-time") ? " à " + v("f-time") : ""),
+    "Lieu : " + v("f-place"),
+    "Catégorie : " + cat.options[cat.selectedIndex].text,
+    v("f-price") && "Prix : " + v("f-price"),
+    v("f-link") && "Inscription / contact : " + v("f-link"),
+    v("f-desc") && "Remarque : " + v("f-desc")
+  ].filter(Boolean).join("\n");
+  document.getElementById("propMsg").textContent = msg;
+  document.getElementById("propActions").innerHTML =
+    (WABO_WHATSAPP ? `<a class="btn primary" href="${esc(waTo(msg))}" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>` : "") +
+    `<button type="button" class="btn${WABO_WHATSAPP ? "" : " primary"}" id="copyMsg">Copier le message</button>`;
+  document.getElementById("propResult").hidden = false;
+  document.getElementById("copyMsg").onclick = async () => {
+    try { await navigator.clipboard.writeText(msg); toast("Message copié"); }
+    catch (_) { toast("Copie impossible ici : sélectionnez le texte et copiez-le"); }
+  };
+});
+
+/* ===== Navigation par ancre ===== */
+const VIEWS = ["agenda", "calendrier", "proposer", "a-propos"];
+let currentView = "agenda";
+function route() {
+  const h = location.hash.replace("#", "");
+  const ev = EVENTS.find(e => e.id === h);
+  if (ev) { if (document.getElementById("overlay").hidden) openEvent(ev.id, false); return; }
+  if (!document.getElementById("overlay").hidden) { document.getElementById("overlay").hidden = true; document.body.style.overflow = ""; }
+  currentView = VIEWS.includes(h) ? h : "agenda";
+  VIEWS.forEach(v => { document.getElementById("view-" + v).hidden = v !== currentView; });
+  document.querySelectorAll("nav.tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.tab === currentView ? "page" : "false"));
+  document.querySelector(".hero").hidden = currentView === "a-propos" || currentView === "proposer";
+  if (currentView === "agenda") renderAgenda();
+  if (currentView === "calendrier") renderCalendar();
+  if (currentView === "proposer") renderProposer();
+}
+let toastT;
+function toast(t) { const el = document.getElementById("toast"); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => el.hidden = true, 2600); }
+
+/* ===== Événements d'interface ===== */
+document.addEventListener("click", ev => {
+  const chip = ev.target.closest(".chip");
+  if (chip) { state[chip.dataset.key] = chip.dataset.val; renderAgenda(); return; }
+  const c = ev.target.closest("[data-id]");
+  if (c) { openEvent(c.dataset.id); return; }
+  const d = ev.target.closest("[data-day]");
+  if (d) { state.day = d.dataset.day; renderCalendar(); return; }
+  if (ev.target.id === "overlay") closeEvent();
+});
+document.getElementById("q").addEventListener("input", ev => { state.q = ev.target.value; renderAgenda(); });
+function shiftMonth(n) { const [y, m] = state.month.split("-").map(Number); const d = new Date(Date.UTC(y, m - 1 + n, 1)); state.month = toKey(d).slice(0, 7); renderCalendar(); }
+document.getElementById("prevM").onclick = () => shiftMonth(-1);
+document.getElementById("nextM").onclick = () => shiftMonth(1);
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !document.getElementById("overlay").hidden) closeEvent(); });
+window.addEventListener("hashchange", route);
+
+document.getElementById("updated").textContent = UPDATED;
+document.getElementById("heroText").textContent = "Concerts, festivals, conférences, soirées : " + upcoming.length + " événements à venir, vérifiés, avec les dates, les lieux et les liens pour s'inscrire.";
+route();
+</script>
+</body>
+</html>
