@@ -88,6 +88,26 @@
     ]
   },
   {
+    "id": "colloque-religion-traditionnelle-africaine-2026",
+    "title": "Colloque international sur la religion traditionnelle africaine",
+    "category": "conference",
+    "start": "2026-11-19",
+    "end": "2026-11-20",
+    "city": "Cotonou",
+    "place": "Salle Saint-Charbel, Akpakpa, Cotonou",
+    "price": "Non communiqué",
+    "free": false,
+    "tbc": false,
+    "description": "Colloque organisé par la Conférence épiscopale du Bénin sur le dialogue avec la religion traditionnelle africaine. Il commémore deux rencontres interreligieuses auxquelles avait participé Jean-Paul II.",
+    "link": null,
+    "sources": [
+      {
+        "label": "Benin Web TV",
+        "url": "https://beninwebtv.bj/cotonou-un-colloque-sur-la-religion-traditionnelle-africaine-les-19-et-20-novembre/"
+      }
+    ]
+  },
+  {
     "id": "promenade-culinaire-cotonou-2026",
     "title": "La Promenade Culinaire de Cotonou",
     "category": "gastronomie",
@@ -250,6 +270,27 @@
       {
         "label": "Gouvernement du Bénin – bilan 2025",
         "url": "https://www.gouv.bj/doc/905/download"
+      }
+    ]
+  },
+  {
+    "id": "tayc-africa-tour-cotonou-2026",
+    "title": "Tayc – Africa Tour à Cotonou",
+    "category": "concert",
+    "start": "2026-12-01",
+    "end": "2026-12-31",
+    "city": "Cotonou",
+    "place": "Cotonou – lieu à confirmer",
+    "price": "Billetterie pas encore annoncée",
+    "free": false,
+    "tbc": true,
+    "dateText": "Décembre 2026 – date à confirmer",
+    "description": "Le chanteur Tayc passe par Cotonou en décembre dans le cadre de son Africa Tour 2026, deux ans après son concert avec Dadju pour le projet Héritage. Date exacte, lieu et billetterie pas encore publiés.",
+    "link": null,
+    "sources": [
+      {
+        "label": "Benin Web TV",
+        "url": "https://beninwebtv.bj/tayc-relie-cotonou-et-abidjan-dans-son-africa-tour-2026/"
       }
     ]
   }

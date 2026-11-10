@@ -42,7 +42,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .flag i:nth-child(3){background:var(--red)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 header.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand b{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:26px;letter-spacing:-.5px}
 .brand small{font-size:13px;font-weight:600;color:var(--muted);padding-top:5px}
@@ -129,13 +129,24 @@ nav.tabs a:hover{color:var(--ink)}
 .src{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px}
 .linkbtn{background:none;border:0;padding:0;color:var(--red-dark);font-weight:600;text-decoration:underline;cursor:pointer;font-size:13px;width:fit-content;min-height:24px}
 /* forms */
-.formcard{max-width:640px;background:var(--card);border:1px solid #ECE5DA;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px}
-.wa-card{max-width:640px;background:var(--ink);color:#fff;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.formcard{max-width:640px;background:var(--card);border:1px solid #ECE5DA;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.formcard h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:20px;margin:0}
+.formcard fieldset{border:0;margin:0;padding:12px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.formcard legend{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--green-dark);padding:0 0 4px}
+.hp{position:absolute;left:-9999px}
+.okbox{background:var(--green-soft);border:1px solid #BFE3CF;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.okbox b{font-size:16px}
+.errbox{background:#FDECEE;border:1px solid #F6C2C9;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.wa-card{max-width:640px;background:var(--ink);color:#fff;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.wa-card .actions .btn{background:#fff;color:var(--ink);border-color:#fff}
+.wa-card .actions .btn.ghost{background:transparent;color:#fff;border-color:#6B655D}
 .wa-card .k{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--yellow)}
 .wa-card h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:22px;margin:0}
 .wa-card p{margin:0;color:#E7E1D8;font-size:14px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{font-size:13px;font-weight:600}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:13px;font-weight:600;line-height:1.3}
+.field .hint{font-size:12px;color:var(--muted)}
+.field input[type=file]{min-height:auto;padding:10px;background:var(--bg)}
 .field input,.field select,.field textarea{min-height:46px;padding:10px 12px;border-radius:12px;border:1px solid #DDD5C8;background:#fff;font-size:15px}
 .row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media(max-width:480px){.row2{grid-template-columns:1fr}}
@@ -144,9 +155,11 @@ nav.tabs a:hover{color:var(--ink)}
 .prose{max-width:680px}
 .prose h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:22px;margin:24px 0 8px}
 .prose p,.prose li{color:#3D3832}
-@media(max-width:600px){.long{display:none}nav.tabs a{padding:0 10px}.topbar{padding:10px 0}}
+@media(max-width:600px){.long{display:none}nav.tabs a{padding:0 10px}.topbar{padding-top:10px;padding-bottom:6px}}
 footer{border-top:1px solid var(--line);padding:20px 0 32px;color:var(--muted);font-size:13px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer .contact{display:flex;flex-wrap:wrap;gap:6px 16px}
+footer a{color:var(--ink);font-weight:600}
 .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-size:14px;z-index:30}
 .toast[hidden]{display:none}
 </style>
@@ -212,30 +225,39 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   <section id="view-proposer" class="view" hidden aria-labelledby="propTitle">
     <div class="wa-card">
       <span class="k">Le plus rapide</span>
-      <h2 id="propTitle">Envoyez simplement l'affiche sur WhatsApp</h2>
-      <p id="waText"></p>
-      <div id="waAction"></div>
+      <h2>Envoyez-nous simplement l'affiche</h2>
+      <p id="waText">Par message Instagram ou par e-mail, avec le lien d'inscription si vous l'avez. Nous publions après vérification.</p>
+      <div class="actions" id="waAction"></div>
     </div>
-    <form class="formcard" id="propForm" novalidate>
-      <p class="note" style="margin:0">Ou remplissez ce formulaire : il prépare un message prêt à envoyer. Tous les événements ouverts au public sont les bienvenus ; chaque proposition est vérifiée avant publication.</p>
-      <div class="field"><label for="f-title">Nom de l'événement *</label><input id="f-title" required placeholder="Ex. : Concert live jazz et afrobeat"></div>
+    <form class="formcard" id="propForm" name="proposition" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+      <input type="hidden" name="form-name" value="proposition">
+      <input type="hidden" name="subject" value="Wabo : nouvelle proposition d'événement">
+      <p class="hp"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <h2 id="propTitle">Proposer un événement</h2>
+      <p class="note" style="margin:0">Gratuit pour tous les événements ouverts au public. Chaque proposition est vérifiée avant publication.</p>
+      <div class="field"><label for="f-title">Nom de l'événement *</label><input id="f-title" name="evenement" required placeholder="Ex. : Concert live jazz et afrobeat"></div>
       <div class="row2">
-        <div class="field"><label for="f-date">Date *</label><input id="f-date" type="date" required></div>
-        <div class="field"><label for="f-time">Heure</label><input id="f-time" type="time"></div>
+        <div class="field"><label for="f-date">Date *</label><input id="f-date" name="date" type="date" required></div>
+        <div class="field"><label for="f-time">Heure</label><input id="f-time" name="heure" type="time"></div>
       </div>
-      <div class="field"><label for="f-place">Lieu (nom, quartier, ville) *</label><input id="f-place" required placeholder="Ex. : Institut français, Cotonou"></div>
+      <div class="field"><label for="f-place">Lieu (nom, quartier, ville) *</label><input id="f-place" name="lieu" required placeholder="Ex. : Institut français, Cotonou"></div>
       <div class="row2">
-        <div class="field"><label for="f-cat">Catégorie</label><select id="f-cat"></select></div>
-        <div class="field"><label for="f-price">Prix</label><input id="f-price" placeholder="Gratuit, 5 000 FCFA…"></div>
+        <div class="field"><label for="f-cat">Catégorie</label><select id="f-cat" name="categorie"></select></div>
+        <div class="field"><label for="f-price">Prix</label><input id="f-price" name="prix" placeholder="Gratuit, 5 000 FCFA…"></div>
       </div>
-      <div class="field"><label for="f-link">Lien d'inscription ou contact</label><input id="f-link" placeholder="https://… ou numéro"></div>
-      <div class="field"><label for="f-desc">Description ou remarque</label><textarea id="f-desc" rows="3"></textarea></div>
-      <button class="btn primary" type="submit">Préparer le message</button>
-      <div id="propResult" hidden>
-        <p class="note" style="margin:0 0 8px">Votre message est prêt. Joignez l'affiche si vous l'avez.</p>
-        <div class="msgbox" id="propMsg"></div>
-        <div class="actions" style="margin-top:10px" id="propActions"></div>
-      </div>
+      <div class="field"><label for="f-link">Lien d'inscription ou billetterie</label><input id="f-link" name="lien" placeholder="https://… ou numéro"></div>
+      <div class="field"><label for="f-file">Affiche (photo ou PDF)</label><input id="f-file" name="affiche" type="file" accept="image/*,application/pdf"><span class="hint">8 Mo maximum.</span></div>
+      <div class="field"><label for="f-desc">Description ou remarque</label><textarea id="f-desc" name="description" rows="3"></textarea></div>
+      <fieldset>
+        <legend>Vos coordonnées</legend>
+        <div class="row2">
+          <div class="field"><label for="f-name">Votre nom ou organisation</label><input id="f-name" name="nom" autocomplete="name"></div>
+          <div class="field"><label for="f-phone">Téléphone ou WhatsApp</label><input id="f-phone" name="telephone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="Pour vous répondre si besoin"></div>
+      </fieldset>
+      <button class="btn primary" type="submit" id="propSubmit">Envoyer la proposition</button>
+      <div id="propResult" hidden aria-live="polite"></div>
     </form>
   </section>
 
@@ -248,12 +270,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     <p>Utilisez « Signaler une erreur » sur la fiche ou l'onglet « Proposer un événement ». Les dates marquées « à confirmer » n'ont pas encore été publiées par les organisateurs.</p>
     <h2>Organisateurs</h2>
     <p>Publier un événement sur Wabo est gratuit. Envoyez l'affiche et le lien d'inscription : nous nous occupons du reste.</p>
+    <h2>Nous suivre et nous écrire</h2>
+    <p>Instagram : <a href="https://www.instagram.com/wabo_agenda_benin/" target="_blank" rel="noopener">@wabo_agenda_benin</a><br>E-mail : <a href="mailto:wabo.agenda.benin@gmail.com">wabo.agenda.benin@gmail.com</a></p>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
     <span>Wabo – Agenda Bénin · Données vérifiées le <span id="updated"></span></span>
+    <span class="contact"><a href="https://www.instagram.com/wabo_agenda_benin/" target="_blank" rel="noopener">Instagram @wabo_agenda_benin</a><a href="mailto:wabo.agenda.benin@gmail.com">wabo.agenda.benin@gmail.com</a></span>
     <span>Les informations viennent des organisateurs et de la presse : vérifiez auprès d'eux avant de vous déplacer.</span>
   </div>
 </footer>
@@ -268,11 +293,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
 const WABO_WHATSAPP = "";           // numéro WhatsApp de Wabo au format international sans + (ex. 22900000000). Vide = pas encore activé.
 // Lien public du site, ajouté dans les messages partagés.
 // Sur un vrai hébergement (Netlify, GitHub Pages, nom de domaine…), l'adresse est détectée toute seule.
-const SITE_URL = (/^https?:$/.test(location.protocol) && !/claude|anthropic|usercontent/i.test(location.hostname) && location.hostname !== "localhost")
-  ? location.origin + location.pathname
-  : "https://wabo-agenda.netlify.app/";
+const PUBLIC_URL = "https://wabo-agenda.netlify.app/";
+// Sur un nom de domaine propre (ex. wabo.bj), l'adresse est détectée toute seule ;
+// sinon (Netlify, aperçus, Claude) on utilise l'adresse publique ci-dessus.
+const SITE_URL = (/^https?:$/.test(location.protocol) && !/netlify\.app$|claude|anthropic|usercontent|localhost|127\.0\.0\.1/i.test(location.hostname))
+  ? location.origin + "/"
+  : PUBLIC_URL;
+const WABO_EMAIL = "wabo.agenda.benin@gmail.com";
+const WABO_INSTAGRAM = "wabo_agenda_benin";
 const UPDATED = "10 novembre 2026";
-const EVENTS = [{"id": "festival-sica-2026", "title": "Festival SICA – 20e édition", "category": "festival", "start": "2026-11-09", "end": "2026-11-15", "city": "Cotonou", "place": "Cotonou – soirée de gala au Palais des Congrès", "price": "Non communiqué", "free": false, "tbc": false, "description": "Le Festival des stars de l'intégration culturelle africaine revient dans sa ville de naissance pour ses 25 ans. Vingt-six pays sont annoncés, avec des compétitions artistiques, des rencontres professionnelles et une soirée de gala au Palais des Congrès.", "link": null, "sources": [{"label": "Matin Libre, 6 nov. 2026", "url": "https://matinlibre.com/2026/11/06/festival-sica-apres-cinq-editions-itinerantes-le-rendez-vous-revient-a-cotonou/"}]}, {"id": "sima-2026", "title": "SIMA 2026 – Salon des industries musicales d'Afrique francophone", "category": "conference", "start": "2026-11-12", "end": "2026-11-13", "city": "Cotonou", "place": "Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Deux journées professionnelles de panels et de rencontres B2B sur l'intelligence artificielle, le droit d'auteur, la mobilité des artistes et le financement de la musique africaine. Artistes annoncés : A'Salfo, Tiakola, Suspect 95, Hiro et Singuila.", "link": null, "sources": [{"label": "Capmad", "url": "https://www.capmad.com/article/sima-2026-cotonou-accueille-la-troisieme-edition-du-salon-musical-francophone-les-12-et-13-novembre"}, {"label": "SenePlus", "url": "https://www.seneplus.com/article/cotonou-accueillera-la-3e-edition-du-sima-en-novembre-2026"}, {"label": "Afrimag", "url": "https://afrimag.net/benin-sima-2026-cotonou-industrie-musicale-tiakola-angelo-gopee/"}]}, {"id": "art-design-architecture-forum-2026", "title": "Art, Design & Architecture Forum – Cotonou Art Week", "category": "culture", "start": "2026-11-13", "end": "2026-11-13", "city": "Cotonou", "place": "Golden Tulip Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Temps fort de la Cotonou Art Week : un forum consacré à l'art, au design et à l'architecture. La semaine propose aussi des journées portes ouvertes d'ateliers, des visites d'expositions et des rencontres avec des artistes.", "link": null, "sources": [{"label": "Little Africa", "url": "https://littleafrica.fr/little-africa-x-cotonou-art-week-pour-une-immersion-au-coeur-des-scenes-artistiques-et-culturelles-du-benin/"}]}, {"id": "cyber-africa-forum-2026", "title": "Cyber Africa Forum 2026", "category": "conference", "start": "2026-11-16", "end": "2026-11-17", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Sixième édition du forum consacré au numérique, à la cybersécurité et à l'innovation : conférences, tables rondes ministérielles, présentations de solutions et rendez-vous d'affaires. Thème : « Construire la confiance numérique de demain ».", "link": null, "sources": [{"label": "Digital Business Africa", "url": "https://www.digitalbusiness.africa/cyber-africa-forum-2026-cotonou-reunira-1-500-decideurs-autour-de-la-confiance-numerique/"}]}, {"id": "promenade-culinaire-cotonou-2026", "title": "La Promenade Culinaire de Cotonou", "category": "gastronomie", "start": "2026-11-20", "end": "2026-11-29", "city": "Cotonou", "place": "Restaurants participants, Cotonou", "price": "Menus à prix unique, payés sur place", "free": false, "tbc": false, "description": "Pendant dix jours, des restaurants de Cotonou proposent des menus spéciaux à prix unique, entre cuisine locale et internationale. Pas de paiement à l'avance ni, en général, de réservation ; la liste des restaurants est publiée par l'organisateur.", "link": "https://cowafweek.com/cotonou-2026/", "sources": [{"label": "Site de l'organisateur", "url": "https://cowafweek.com/cotonou-2026/"}]}, {"id": "africa-blockchain-crypto-conference-2026", "title": "Africa Blockchain & Crypto Conference 2026", "category": "conference", "start": "2026-11-25", "end": "2026-11-25", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Pré-événement du Next Fintech Forum, consacré aux actifs numériques en Afrique de l'Ouest francophone : régulateurs, institutions financières, fintechs et investisseurs.", "link": null, "sources": [{"label": "Financial Afrik – agenda", "url": "https://www.financialafrik.com/agenda/cotonou-lafrica-blockchain-crypto-conference-2026/"}]}, {"id": "next-fintech-forum-2026", "title": "Next Fintech Forum 2026", "category": "conference", "start": "2026-11-26", "end": "2026-11-27", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Huitième édition du rendez-vous fintech d'Afrique francophone, avec plus de 500 décideurs attendus. Thème : « De l'adoption à la valeur : industrialiser la fintech pour accélérer la croissance de l'UEMOA ».", "link": "https://www.nextfintechforum.com", "sources": [{"label": "Financial Afrik – agenda", "url": "https://www.financialafrik.com/agenda/cotonou-8%E1%B5%89-edition-du-next-fintech-forum-2026/"}]}, {"id": "deborah-lukalu-cotonou-2026", "title": "Déborah Lukalu en concert – festival Soheja", "category": "concert", "start": "2026-12-20", "end": "2026-12-20", "time": "16:00", "city": "Cotonou", "place": "Majestic Cinéma, Wologuèdè, Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Premier concert live au Bénin de la chanteuse gospel congolaise Déborah Lukalu, dans le cadre du festival Soheja. Coorganisé par Jaya Center et Gospel Afrique Francophone.", "link": null, "sources": [{"label": "Chrétiens.com", "url": "https://chretiens.com/chretiensdumonde/actualitechretienne/deborah-lukalu-en-concert-a-cotonou-au-benin-le-20-decembre-2026/2026/09/26/13/12/"}]}, {"id": "weloveya-2026", "title": "WeLovEya 2026", "category": "concert", "start": "2026-12-26", "end": "2026-12-27", "city": "Cotonou", "place": "Place de l'Amazone, Cotonou", "price": "Billetterie pas encore annoncée", "free": false, "tbc": false, "description": "Cinquième édition du grand festival afro-urbain et afrobeat de fin d'année. Le rappeur Tiakola est annoncé le 27 décembre ; la programmation complète et la billetterie restent à publier par les organisateurs.", "link": null, "sources": [{"label": "Benin Web TV – dates 2026", "url": "https://beninwebtv.bj/cotonou-weloveya-prevu-les-26-et-27-decembre-pour-sa-cinquieme-edition/"}, {"label": "Benin Web TV – Tiakola", "url": "https://beninwebtv.bj/benin-tiakola-annonce-a-cotonou-le-27-decembre-pour-sa-tournee-africaine/"}]}, {"id": "festival-yetin-2026", "title": "Festival Yêtin 2026", "category": "festival", "start": "2026-12-26", "end": "2026-12-29", "city": "Abomey-Calavi · Kétou · Torri · Cotonou", "place": "Yêtin Bar (Calavi), Chez Félix (Kétou), Sous les Lauriers (Torri), Pura Vida (Cotonou)", "price": "Pass 4 jours en prévente : 8 500 FCFA · 2 000 FCFA par site", "free": false, "tbc": false, "description": "Édition inaugurale d'un festival franco-canado-béninois sur quatre sites : e-gaming, patrimoine vodun, masterclasses afro, arts vivants et conte. Grande soirée de clôture le 29 décembre au Pura Vida, à Cotonou (pass VIP 18 000 FCFA).", "link": "https://art-hum.org/lefestivales.php", "sources": [{"label": "Site du festival", "url": "https://art-hum.org/lefestivales.php"}]}, {"id": "vodun-days-2027", "title": "Vodun Days 2027", "category": "culture", "start": "2027-01-02", "end": "2027-01-09", "city": "Ouidah", "place": "Ouidah", "price": "Non communiqué", "free": false, "tbc": false, "description": "La grande célébration des cultures et spiritualités vodun passe de trois à sept jours : cérémonies, processions et danses traditionnelles à Ouidah. Les jeudi 7 et vendredi 8 janvier 2027 sont chômés et payés.", "link": null, "sources": [{"label": "Benin Web TV", "url": "https://beninwebtv.bj/benin-le-gouvernement-beninois-precise-les-raisons-de-la-prolongation-des-vodun-days-2027-a-ouidah/"}]}, {"id": "cotonou-comedy-festival-2026", "title": "Cotonou Comedy Festival 2026", "category": "humour", "start": "2026-12-01", "end": "2026-12-31", "city": "Cotonou", "place": "Cotonou", "price": "Non communiqué", "free": false, "tbc": true, "dateText": "Décembre 2026 – dates à confirmer", "description": "Deuxième édition du festival international d'humour lancé en 2025 par le gouvernement béninois avec le groupe Montreux Comedy. La première édition avait réuni galas, masterclasses et un village du rire gratuit. Les dates exactes de 2026 ne sont pas encore publiées.", "link": "https://cotonoucomedy.com/", "sources": [{"label": "Gouvernement du Bénin – bilan 2025", "url": "https://www.gouv.bj/doc/905/download"}]}];
+const EVENTS = [{"id": "festival-sica-2026", "title": "Festival SICA – 20e édition", "category": "festival", "start": "2026-11-09", "end": "2026-11-15", "city": "Cotonou", "place": "Cotonou – soirée de gala au Palais des Congrès", "price": "Non communiqué", "free": false, "tbc": false, "description": "Le Festival des stars de l'intégration culturelle africaine revient dans sa ville de naissance pour ses 25 ans. Vingt-six pays sont annoncés, avec des compétitions artistiques, des rencontres professionnelles et une soirée de gala au Palais des Congrès.", "link": null, "sources": [{"label": "Matin Libre, 6 nov. 2026", "url": "https://matinlibre.com/2026/11/06/festival-sica-apres-cinq-editions-itinerantes-le-rendez-vous-revient-a-cotonou/"}]}, {"id": "sima-2026", "title": "SIMA 2026 – Salon des industries musicales d'Afrique francophone", "category": "conference", "start": "2026-11-12", "end": "2026-11-13", "city": "Cotonou", "place": "Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Deux journées professionnelles de panels et de rencontres B2B sur l'intelligence artificielle, le droit d'auteur, la mobilité des artistes et le financement de la musique africaine. Artistes annoncés : A'Salfo, Tiakola, Suspect 95, Hiro et Singuila.", "link": null, "sources": [{"label": "Capmad", "url": "https://www.capmad.com/article/sima-2026-cotonou-accueille-la-troisieme-edition-du-salon-musical-francophone-les-12-et-13-novembre"}, {"label": "SenePlus", "url": "https://www.seneplus.com/article/cotonou-accueillera-la-3e-edition-du-sima-en-novembre-2026"}, {"label": "Afrimag", "url": "https://afrimag.net/benin-sima-2026-cotonou-industrie-musicale-tiakola-angelo-gopee/"}]}, {"id": "art-design-architecture-forum-2026", "title": "Art, Design & Architecture Forum – Cotonou Art Week", "category": "culture", "start": "2026-11-13", "end": "2026-11-13", "city": "Cotonou", "place": "Golden Tulip Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Temps fort de la Cotonou Art Week : un forum consacré à l'art, au design et à l'architecture. La semaine propose aussi des journées portes ouvertes d'ateliers, des visites d'expositions et des rencontres avec des artistes.", "link": null, "sources": [{"label": "Little Africa", "url": "https://littleafrica.fr/little-africa-x-cotonou-art-week-pour-une-immersion-au-coeur-des-scenes-artistiques-et-culturelles-du-benin/"}]}, {"id": "cyber-africa-forum-2026", "title": "Cyber Africa Forum 2026", "category": "conference", "start": "2026-11-16", "end": "2026-11-17", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Sixième édition du forum consacré au numérique, à la cybersécurité et à l'innovation : conférences, tables rondes ministérielles, présentations de solutions et rendez-vous d'affaires. Thème : « Construire la confiance numérique de demain ».", "link": null, "sources": [{"label": "Digital Business Africa", "url": "https://www.digitalbusiness.africa/cyber-africa-forum-2026-cotonou-reunira-1-500-decideurs-autour-de-la-confiance-numerique/"}]}, {"id": "colloque-religion-traditionnelle-africaine-2026", "title": "Colloque international sur la religion traditionnelle africaine", "category": "conference", "start": "2026-11-19", "end": "2026-11-20", "city": "Cotonou", "place": "Salle Saint-Charbel, Akpakpa, Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Colloque organisé par la Conférence épiscopale du Bénin sur le dialogue avec la religion traditionnelle africaine. Il commémore deux rencontres interreligieuses auxquelles avait participé Jean-Paul II.", "link": null, "sources": [{"label": "Benin Web TV", "url": "https://beninwebtv.bj/cotonou-un-colloque-sur-la-religion-traditionnelle-africaine-les-19-et-20-novembre/"}]}, {"id": "promenade-culinaire-cotonou-2026", "title": "La Promenade Culinaire de Cotonou", "category": "gastronomie", "start": "2026-11-20", "end": "2026-11-29", "city": "Cotonou", "place": "Restaurants participants, Cotonou", "price": "Menus à prix unique, payés sur place", "free": false, "tbc": false, "description": "Pendant dix jours, des restaurants de Cotonou proposent des menus spéciaux à prix unique, entre cuisine locale et internationale. Pas de paiement à l'avance ni, en général, de réservation ; la liste des restaurants est publiée par l'organisateur.", "link": "https://cowafweek.com/cotonou-2026/", "sources": [{"label": "Site de l'organisateur", "url": "https://cowafweek.com/cotonou-2026/"}]}, {"id": "africa-blockchain-crypto-conference-2026", "title": "Africa Blockchain & Crypto Conference 2026", "category": "conference", "start": "2026-11-25", "end": "2026-11-25", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Pré-événement du Next Fintech Forum, consacré aux actifs numériques en Afrique de l'Ouest francophone : régulateurs, institutions financières, fintechs et investisseurs.", "link": null, "sources": [{"label": "Financial Afrik – agenda", "url": "https://www.financialafrik.com/agenda/cotonou-lafrica-blockchain-crypto-conference-2026/"}]}, {"id": "next-fintech-forum-2026", "title": "Next Fintech Forum 2026", "category": "conference", "start": "2026-11-26", "end": "2026-11-27", "city": "Cotonou", "place": "Sofitel Cotonou Marina Hotel & Spa", "price": "Sur inscription", "free": false, "tbc": false, "description": "Huitième édition du rendez-vous fintech d'Afrique francophone, avec plus de 500 décideurs attendus. Thème : « De l'adoption à la valeur : industrialiser la fintech pour accélérer la croissance de l'UEMOA ».", "link": "https://www.nextfintechforum.com", "sources": [{"label": "Financial Afrik – agenda", "url": "https://www.financialafrik.com/agenda/cotonou-8%E1%B5%89-edition-du-next-fintech-forum-2026/"}]}, {"id": "deborah-lukalu-cotonou-2026", "title": "Déborah Lukalu en concert – festival Soheja", "category": "concert", "start": "2026-12-20", "end": "2026-12-20", "time": "16:00", "city": "Cotonou", "place": "Majestic Cinéma, Wologuèdè, Cotonou", "price": "Non communiqué", "free": false, "tbc": false, "description": "Premier concert live au Bénin de la chanteuse gospel congolaise Déborah Lukalu, dans le cadre du festival Soheja. Coorganisé par Jaya Center et Gospel Afrique Francophone.", "link": null, "sources": [{"label": "Chrétiens.com", "url": "https://chretiens.com/chretiensdumonde/actualitechretienne/deborah-lukalu-en-concert-a-cotonou-au-benin-le-20-decembre-2026/2026/09/26/13/12/"}]}, {"id": "weloveya-2026", "title": "WeLovEya 2026", "category": "concert", "start": "2026-12-26", "end": "2026-12-27", "city": "Cotonou", "place": "Place de l'Amazone, Cotonou", "price": "Billetterie pas encore annoncée", "free": false, "tbc": false, "description": "Cinquième édition du grand festival afro-urbain et afrobeat de fin d'année. Le rappeur Tiakola est annoncé le 27 décembre ; la programmation complète et la billetterie restent à publier par les organisateurs.", "link": null, "sources": [{"label": "Benin Web TV – dates 2026", "url": "https://beninwebtv.bj/cotonou-weloveya-prevu-les-26-et-27-decembre-pour-sa-cinquieme-edition/"}, {"label": "Benin Web TV – Tiakola", "url": "https://beninwebtv.bj/benin-tiakola-annonce-a-cotonou-le-27-decembre-pour-sa-tournee-africaine/"}]}, {"id": "festival-yetin-2026", "title": "Festival Yêtin 2026", "category": "festival", "start": "2026-12-26", "end": "2026-12-29", "city": "Abomey-Calavi · Kétou · Torri · Cotonou", "place": "Yêtin Bar (Calavi), Chez Félix (Kétou), Sous les Lauriers (Torri), Pura Vida (Cotonou)", "price": "Pass 4 jours en prévente : 8 500 FCFA · 2 000 FCFA par site", "free": false, "tbc": false, "description": "Édition inaugurale d'un festival franco-canado-béninois sur quatre sites : e-gaming, patrimoine vodun, masterclasses afro, arts vivants et conte. Grande soirée de clôture le 29 décembre au Pura Vida, à Cotonou (pass VIP 18 000 FCFA).", "link": "https://art-hum.org/lefestivales.php", "sources": [{"label": "Site du festival", "url": "https://art-hum.org/lefestivales.php"}]}, {"id": "vodun-days-2027", "title": "Vodun Days 2027", "category": "culture", "start": "2027-01-02", "end": "2027-01-09", "city": "Ouidah", "place": "Ouidah", "price": "Non communiqué", "free": false, "tbc": false, "description": "La grande célébration des cultures et spiritualités vodun passe de trois à sept jours : cérémonies, processions et danses traditionnelles à Ouidah. Les jeudi 7 et vendredi 8 janvier 2027 sont chômés et payés.", "link": null, "sources": [{"label": "Benin Web TV", "url": "https://beninwebtv.bj/benin-le-gouvernement-beninois-precise-les-raisons-de-la-prolongation-des-vodun-days-2027-a-ouidah/"}]}, {"id": "cotonou-comedy-festival-2026", "title": "Cotonou Comedy Festival 2026", "category": "humour", "start": "2026-12-01", "end": "2026-12-31", "city": "Cotonou", "place": "Cotonou", "price": "Non communiqué", "free": false, "tbc": true, "dateText": "Décembre 2026 – dates à confirmer", "description": "Deuxième édition du festival international d'humour lancé en 2025 par le gouvernement béninois avec le groupe Montreux Comedy. La première édition avait réuni galas, masterclasses et un village du rire gratuit. Les dates exactes de 2026 ne sont pas encore publiées.", "link": "https://cotonoucomedy.com/", "sources": [{"label": "Gouvernement du Bénin – bilan 2025", "url": "https://www.gouv.bj/doc/905/download"}]}, {"id": "tayc-africa-tour-cotonou-2026", "title": "Tayc – Africa Tour à Cotonou", "category": "concert", "start": "2026-12-01", "end": "2026-12-31", "city": "Cotonou", "place": "Cotonou – lieu à confirmer", "price": "Billetterie pas encore annoncée", "free": false, "tbc": true, "dateText": "Décembre 2026 – date à confirmer", "description": "Le chanteur Tayc passe par Cotonou en décembre dans le cadre de son Africa Tour 2026, deux ans après son concert avec Dadju pour le projet Héritage. Date exacte, lieu et billetterie pas encore publiés.", "link": null, "sources": [{"label": "Benin Web TV", "url": "https://beninwebtv.bj/tayc-relie-cotonou-et-abidjan-dans-son-africa-tour-2026/"}]}];
 
 /* ===== Données de référence ===== */
 const CATS = {
@@ -477,13 +507,12 @@ function closeEvent() {
 /* ===== Proposer ===== */
 function waTo(text) { return "https://wa.me/" + WABO_WHATSAPP + "?text=" + encodeURIComponent(text); }
 function renderProposer() {
-  document.getElementById("waText").textContent = WABO_WHATSAPP
-    ? "Envoyez l'affiche et, si vous l'avez, le lien d'inscription : nous lisons la date, le lieu et le prix, puis nous publions après vérification."
-    : "Le numéro WhatsApp de Wabo sera bientôt activé. En attendant, utilisez le formulaire ci-dessous : il prépare un message que vous pourrez copier.";
-  document.getElementById("waAction").innerHTML = WABO_WHATSAPP
-    ? `<a class="btn" style="background:#fff;color:var(--ink);width:fit-content" href="${esc(waTo("Bonjour Wabo, voici un événement à publier :"))}" target="_blank" rel="noopener">Écrire à Wabo sur WhatsApp</a>` : "";
+  document.getElementById("waAction").innerHTML =
+    (WABO_WHATSAPP ? `<a class="btn" href="${esc(waTo("Bonjour Wabo, voici un événement à publier :"))}" target="_blank" rel="noopener">WhatsApp</a>` : "") +
+    `<a class="btn" href="https://ig.me/m/${WABO_INSTAGRAM}" target="_blank" rel="noopener">Message Instagram</a>` +
+    `<a class="btn ghost" href="mailto:${WABO_EMAIL}?subject=${encodeURIComponent("Événement à publier sur Wabo")}">Par e-mail</a>`;
   const sel = document.getElementById("f-cat");
-  if (!sel.options.length) sel.innerHTML = Object.entries(CATS).map(([k, v]) => `<option value="${k}">${esc(v.label)}</option>`).join("") + '<option value="autre">Autre</option>';
+  if (!sel.options.length) sel.innerHTML = Object.entries(CATS).map(([k, v]) => `<option value="${esc(v.label)}">${esc(v.label)}</option>`).join("") + '<option value="Autre">Autre</option>';
 }
 function prefillReport(e) {
   location.hash = "#proposer";
@@ -493,31 +522,57 @@ function prefillReport(e) {
     document.getElementById("f-desc").focus();
   }, 50);
 }
-document.getElementById("propForm").addEventListener("submit", ev => {
-  ev.preventDefault();
+function propSummary() {
   const v = id => document.getElementById(id).value.trim();
-  const missing = ["f-title", "f-date", "f-place"].filter(id => !v(id) && !(id === "f-date" && v("f-title").startsWith("Correction")));
-  if (missing.length) { toast("Merci de remplir les champs marqués *"); document.getElementById(missing[0]).focus(); return; }
   const cat = document.getElementById("f-cat");
-  const msg = [
+  return [
     "Nouvel événement pour Wabo",
     "Nom : " + v("f-title"),
     v("f-date") && "Date : " + (() => { const d = fromKey(v("f-date")); return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear(); })() + (v("f-time") ? " à " + v("f-time") : ""),
     "Lieu : " + v("f-place"),
-    "Catégorie : " + cat.options[cat.selectedIndex].text,
+    cat.selectedIndex >= 0 && "Catégorie : " + cat.options[cat.selectedIndex].text,
     v("f-price") && "Prix : " + v("f-price"),
-    v("f-link") && "Inscription / contact : " + v("f-link"),
-    v("f-desc") && "Remarque : " + v("f-desc")
+    v("f-link") && "Inscription : " + v("f-link"),
+    v("f-desc") && "Remarque : " + v("f-desc"),
+    (v("f-name") || v("f-phone") || v("f-email")) && "Contact : " + [v("f-name"), v("f-phone"), v("f-email")].filter(Boolean).join(" · ")
   ].filter(Boolean).join("\n");
-  document.getElementById("propMsg").textContent = msg;
-  document.getElementById("propActions").innerHTML =
-    (WABO_WHATSAPP ? `<a class="btn primary" href="${esc(waTo(msg))}" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>` : "") +
-    `<button type="button" class="btn${WABO_WHATSAPP ? "" : " primary"}" id="copyMsg">Copier le message</button>`;
-  document.getElementById("propResult").hidden = false;
-  document.getElementById("copyMsg").onclick = async () => {
-    try { await navigator.clipboard.writeText(msg); toast("Message copié"); }
-    catch (_) { toast("Copie impossible ici : sélectionnez le texte et copiez-le"); }
-  };
+}
+document.getElementById("propForm").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const form = ev.target;
+  const v = id => document.getElementById(id).value.trim();
+  const isFix = v("f-title").startsWith("Correction");
+  const missing = ["f-title", "f-date", "f-place"].filter(id => !v(id) && !(isFix && id !== "f-title"));
+  if (missing.length) { toast("Merci de remplir les champs marqués *"); document.getElementById(missing[0]).focus(); return; }
+  const email = document.getElementById("f-email");
+  if (email.value && !email.checkValidity()) { toast("L'adresse e-mail semble incomplète"); email.focus(); return; }
+  const file = document.getElementById("f-file").files[0];
+  if (file && file.size > 8 * 1024 * 1024) { toast("L'affiche dépasse 8 Mo : envoyez-la plutôt par Instagram ou e-mail"); return; }
+  const btn = document.getElementById("propSubmit");
+  const out = document.getElementById("propResult");
+  btn.disabled = true; btn.textContent = "Envoi en cours…";
+  let ok = false;
+  try {
+    const res = await fetch("/", { method: "POST", body: new FormData(form) });
+    ok = res.ok;
+  } catch (_) { ok = false; }
+  btn.disabled = false; btn.textContent = "Envoyer la proposition";
+  out.hidden = false;
+  if (ok) {
+    const title = v("f-title");
+    form.reset();
+    out.innerHTML = `<div class="okbox"><b>Merci, c'est envoyé !</b><span>Nous vérifions « ${esc(title)} » et le publions rapidement. Suivez <a href="https://www.instagram.com/${WABO_INSTAGRAM}/" target="_blank" rel="noopener">@${WABO_INSTAGRAM}</a> pour le voir passer.</span></div>`;
+  } else {
+    const msg = propSummary();
+    out.innerHTML = `<div class="errbox"><b>L'envoi n'a pas abouti.</b><span>Envoyez-nous ce message par e-mail ou sur Instagram, avec l'affiche :</span><div class="msgbox" id="propMsg"></div>
+      <div class="actions"><a class="btn primary" href="mailto:${WABO_EMAIL}?subject=${encodeURIComponent("Événement à publier sur Wabo")}&body=${encodeURIComponent(msg)}">Envoyer par e-mail</a><button type="button" class="btn" id="copyMsg">Copier le message</button></div></div>`;
+    document.getElementById("propMsg").textContent = msg;
+    document.getElementById("copyMsg").onclick = async () => {
+      try { await navigator.clipboard.writeText(msg); toast("Message copié"); }
+      catch (_) { toast("Copie impossible ici : sélectionnez le texte et copiez-le"); }
+    };
+  }
+  out.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 
 /* ===== Navigation par ancre ===== */
