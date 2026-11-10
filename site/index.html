@@ -555,7 +555,8 @@ document.getElementById("propForm").addEventListener("submit", async ev => {
   try {
     const res = await fetch("/", { method: "POST", body: new FormData(form) });
     ok = res.ok;
-  } catch (_) { ok = false; }
+    if (!ok) console.warn("Wabo : envoi du formulaire refusé, code", res.status);
+  } catch (err) { ok = false; console.warn("Wabo : envoi du formulaire impossible", err); }
   btn.disabled = false; btn.textContent = "Envoyer la proposition";
   out.hidden = false;
   if (ok) {
