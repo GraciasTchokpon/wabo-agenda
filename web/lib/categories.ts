@@ -12,6 +12,7 @@ export const CATEGORIES: Record<string, { label: string; bg: string }> = {
   lancement: { label: "Lancement", bg: "#E8E1D3" },
   business: { label: "Business et networking", bg: "#E3E0F3" },
   religieux: { label: "Religieux", bg: "#E8E1D3" },
+  salon: { label: "Salon et expo", bg: "#E3E0F3" },
 };
 
 export const catLabel = (k: string) => CATEGORIES[k]?.label ?? k;

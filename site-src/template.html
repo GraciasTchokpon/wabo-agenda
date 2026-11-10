@@ -311,7 +311,7 @@ const SITE_URL = (/^https?:$/.test(location.protocol) && !/netlify\.app$|claude|
   : PUBLIC_URL;
 const WABO_EMAIL = "wabo.agenda.benin@gmail.com";
 const WABO_INSTAGRAM = "wabo_agenda_benin";
-const UPDATED = "10 novembre 2026";
+const UPDATED = "11 novembre 2026";
 const EVENTS = /*__EVENTS__*/[];
 
 /* ===== Données de référence ===== */
@@ -325,7 +325,8 @@ const CATS = {
   soiree:     { label: "Soirée",             bg: "#FCE2E5" },
   atelier:    { label: "Atelier",            bg: "#E3F2EA" },
   sport:      { label: "Sport",              bg: "#FEF3C7" },
-  lancement:  { label: "Lancement",          bg: "#E8E1D3" }
+  lancement:  { label: "Lancement",          bg: "#E8E1D3" },
+  salon:      { label: "Salon et expo",      bg: "#E3E0F3" }
 };
 const MONTHS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
 const MONTHS_SHORT = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
@@ -340,13 +341,14 @@ const now = new Date();
 const TODAY = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
 const overlaps = (e, a, b) => e.start <= b && e.end >= a;
 
+const dnum = d => d.getUTCDate() === 1 ? "1er" : String(d.getUTCDate());
 function dateText(e) {
   if (e.dateText) return e.dateText;
   const s = fromKey(e.start), f = fromKey(e.end);
-  const sd = DAYS[s.getUTCDay()] + " " + s.getUTCDate() + " " + MONTHS[s.getUTCMonth()];
+  const sd = DAYS[s.getUTCDay()] + " " + dnum(s) + " " + MONTHS[s.getUTCMonth()];
   if (e.start === e.end) return cap(sd) + " " + s.getUTCFullYear() + (e.time ? " · " + e.time : "");
   const sameMonth = s.getUTCMonth() === f.getUTCMonth() && s.getUTCFullYear() === f.getUTCFullYear();
-  return "Du " + s.getUTCDate() + (sameMonth ? "" : " " + MONTHS[s.getUTCMonth()]) + " au " + f.getUTCDate() + " " + MONTHS[f.getUTCMonth()] + " " + f.getUTCFullYear();
+  return "Du " + dnum(s) + (sameMonth ? "" : " " + MONTHS[s.getUTCMonth()]) + " au " + f.getUTCDate() + " " + MONTHS[f.getUTCMonth()] + " " + f.getUTCFullYear();
 }
 function shortDates(e) {
   if (e.tbc) return "Dates à confirmer";

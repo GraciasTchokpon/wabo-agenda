@@ -41,6 +41,7 @@ CATS = {
     "atelier": ("Atelier", "Ateliers", "#E3F2EA"),
     "sport": ("Sport", "Événements sportifs", "#FEF3C7"),
     "lancement": ("Lancement", "Lancements", "#E8E1D3"),
+    "salon": ("Salon et expo", "Salons et expositions", "#E3E0F3"),
 }
 MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
           "septembre", "octobre", "novembre", "décembre"]
@@ -73,6 +74,10 @@ def long_date(x):
     return f"{DAYS[x.weekday()]} {x.day}{'er' if x.day == 1 else ''} {MONTHS[x.month - 1]} {x.year}"
 
 
+def dnum(x):
+    return "1er" if x.day == 1 else str(x.day)
+
+
 def date_text(e):
     if e.get("tbc"):
         return e.get("dateText") or f"{MONTHS[d(e['start']).month - 1].capitalize()} {d(e['start']).year} – dates à confirmer"
@@ -80,10 +85,10 @@ def date_text(e):
     if s == f:
         return long_date(s).capitalize() + (f" à {e['time']}" if e.get("time") else "")
     if s.month == f.month and s.year == f.year:
-        return f"Du {s.day} au {f.day} {MONTHS[s.month - 1]} {s.year}"
+        return f"Du {dnum(s)} au {f.day} {MONTHS[s.month - 1]} {s.year}"
     if s.year == f.year:
-        return f"Du {s.day} {MONTHS[s.month - 1]} au {f.day} {MONTHS[f.month - 1]} {f.year}"
-    return f"Du {s.day} {MONTHS[s.month - 1]} {s.year} au {f.day} {MONTHS[f.month - 1]} {f.year}"
+        return f"Du {dnum(s)} {MONTHS[s.month - 1]} au {f.day} {MONTHS[f.month - 1]} {f.year}"
+    return f"Du {dnum(s)} {MONTHS[s.month - 1]} {s.year} au {f.day} {MONTHS[f.month - 1]} {f.year}"
 
 
 def short_dates(e):
