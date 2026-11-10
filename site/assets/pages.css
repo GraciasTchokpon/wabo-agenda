@@ -1,0 +1,65 @@
+/* Pages fixes de Wabo : fiches événement, villes, mois, catégories */
+:root{
+  --green:#008751; --green-dark:#006B3F; --green-soft:#E3F2EA;
+  --yellow:#FCD116; --red:#E8112D; --red-dark:#B30E25;
+  --ink:#1C1A17; --muted:#5E5850; --bg:#FAF7F2; --card:#FFFFFF; --line:#E8E1D6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.5}
+a{color:var(--green-dark)}
+.flag{display:flex;height:5px}.flag i{flex:1}.flag i:nth-child(1){background:var(--green)}.flag i:nth-child(2){background:var(--yellow)}.flag i:nth-child(3){background:var(--red)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header.top{background:#fff;border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 12px;padding:12px 20px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:26px;letter-spacing:-.5px}
+.brand small{color:var(--muted);font-size:13px;font-weight:500}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap}
+nav.tabs a{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:12px;color:var(--muted);font-weight:600;font-size:15px;text-decoration:none}
+nav.tabs a:hover{background:var(--green-soft);color:var(--green-dark)}
+main.wrap{padding:20px 20px 40px}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 14px}
+.crumbs a{color:var(--muted)}
+h1{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:clamp(28px,5vw,40px);line-height:1.08;letter-spacing:-.8px;margin:6px 0 10px}
+h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:22px;line-height:1.2;margin:28px 0 10px}
+.lead{color:var(--muted);margin:0 0 18px;max-width:680px}
+.cat{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--green-dark)}
+.badge{display:inline-block;align-self:flex-start;width:fit-content;font-size:12px;font-weight:700;padding:3px 8px;border-radius:8px;margin-top:4px}
+.badge.live{background:#FDECEE;color:var(--red-dark)}
+.badge.tbc{background:#FEF3C7;color:#7A5B00}
+.badge.past{background:#EEE9E1;color:var(--muted)}
+.sheet{background:var(--card);border:1px solid #ECE5DA;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;max-width:720px}
+.facts{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.facts li{display:flex;gap:10px}
+.facts b{display:block;font-size:15px}
+.facts span{font-size:14px;color:var(--muted)}
+.facts .k{flex:0 0 88px;font-size:13px;font-weight:700;color:var(--green-dark);padding-top:2px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);font-weight:600;font-size:14px;text-decoration:none;color:var(--ink)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+.btn:hover{border-color:var(--ink)}
+.btn.primary:hover{background:var(--green-dark);border-color:var(--green-dark)}
+.desc{margin:0;color:#3D3832}
+.src{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.card{display:flex;gap:14px;padding:14px;border-radius:18px;background:var(--card);border:1px solid #ECE5DA;text-decoration:none;color:inherit}
+.card:hover{border-color:var(--green)}
+.tile{flex:0 0 auto;width:66px;min-height:76px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 4px;text-align:center}
+.tile b{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:26px;line-height:1}
+.tile small{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-top:3px}
+.tile em{font-style:normal;font-size:10px;color:var(--muted);margin-top:2px}
+.cbody{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ctitle{font-weight:700;font-size:16px;line-height:1.25}
+.cmeta{font-size:14px;color:var(--muted)}
+.empty{color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:18px}
+.explore{border-top:1px solid var(--line);padding:22px 0 6px}
+.explore h2{font-size:18px;margin:0 0 10px}
+.explore h3{font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--green-dark);margin:14px 0 6px}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.links a{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:500}
+.links a:hover{border-color:var(--green)}
+footer{border-top:1px solid var(--line);padding:20px 0 32px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--ink);font-weight:600}
+@media(max-width:600px){nav.tabs a{padding:0 9px;font-size:14px}.brand small{display:none}}

@@ -71,7 +71,7 @@ nav.tabs a:hover{color:var(--ink)}
 .resultbar h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:20px;margin:0}
 .resultbar span{color:var(--muted);font-size:13px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.card{display:flex;gap:14px;padding:14px;border-radius:var(--radius);background:var(--card);border:1px solid #ECE5DA;text-align:left;cursor:pointer;width:100%;transition:border-color .15s, transform .15s}
+.card{display:flex;gap:14px;text-decoration:none;color:inherit;padding:14px;border-radius:var(--radius);background:var(--card);border:1px solid #ECE5DA;text-align:left;cursor:pointer;width:100%;transition:border-color .15s, transform .15s}
 .card:hover{border-color:var(--green);transform:translateY(-1px)}
 .tile{flex:0 0 auto;width:66px;min-height:76px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 4px}
 .tile b{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:26px;line-height:1}
@@ -159,6 +159,12 @@ nav.tabs a:hover{color:var(--ink)}
 .prose h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:22px;margin:24px 0 8px}
 .prose p,.prose li{color:#3D3832}
 @media(max-width:600px){.long{display:none}nav.tabs a{padding:0 10px}.topbar{padding-top:10px;padding-bottom:6px}}
+.explore{border-top:1px solid var(--line);padding:22px 20px 6px;margin-top:28px}
+.explore h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-size:18px;margin:0 0 10px}
+.explore h3{font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--green-dark);margin:14px 0 6px}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.links a{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:500}
+.links a:hover{border-color:var(--green)}
 footer{border-top:1px solid var(--line);padding:20px 0 32px;color:var(--muted);font-size:13px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
 footer .contact{display:flex;flex-wrap:wrap;gap:6px 16px}
@@ -278,6 +284,7 @@ footer a{color:var(--ink);font-weight:600}
   </section>
 </main>
 
+<!--__EXPLORE__-->
 <footer>
   <div class="wrap">
     <span>Wabo – Agenda Bénin · Données vérifiées le <span id="updated"></span></span>
@@ -385,7 +392,7 @@ function tile(e) {
 function card(e) {
   const c = CATS[e.category] || { label: e.category };
   const live = !e.tbc && e.start <= TODAY && e.end >= TODAY;
-  return `<button class="card" data-id="${esc(e.id)}" aria-label="${esc(e.title)}, ${esc(shortDates(e))}, ${esc(e.city)}">
+  return `<a class="card" href="evenements/${esc(e.id)}/" data-id="${esc(e.id)}" aria-label="${esc(e.title)}, ${esc(shortDates(e))}, ${esc(e.city)}">
     ${tile(e)}
     <div class="cbody">
       <span class="cat">${esc(c.label)}</span>
@@ -394,7 +401,7 @@ function card(e) {
       <span class="cprice" style="color:${e.free ? "var(--green-dark)" : "var(--ink)"}">${esc(e.price)}</span>
       ${live ? '<span class="badge live">En ce moment</span>' : ""}${e.tbc ? '<span class="badge tbc">Dates à confirmer</span>' : ""}
     </div>
-  </button>`;
+  </a>`;
 }
 
 function chipRow(el, items, key) {
@@ -455,7 +462,7 @@ function gcalLink(e) {
   return "https://calendar.google.com/calendar/render?" + p.toString();
 }
 function waShare(e) {
-  const t = `${e.title}\n${dateText(e)}\n${e.place}\n${e.link || e.sources[0].url}${SITE_URL ? "\n\nTous les événements du Bénin sur Wabo : " + SITE_URL : "\n\nVu sur Wabo – Agenda Bénin"}`;
+  const t = `${e.title}\n${dateText(e)}\n${e.place}\n${PUBLIC_URL}evenements/${e.id}/\n\nTous les événements du Bénin sur Wabo`;
   return "https://wa.me/?text=" + encodeURIComponent(t);
 }
 const ICON = {
@@ -603,7 +610,10 @@ document.addEventListener("click", ev => {
   const chip = ev.target.closest(".chip");
   if (chip) { state[chip.dataset.key] = chip.dataset.val; renderAgenda(); return; }
   const c = ev.target.closest("[data-id]");
-  if (c) { openEvent(c.dataset.id); return; }
+  if (c) {
+    if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button === 1) return; // ouvrir la page dans un nouvel onglet
+    ev.preventDefault(); openEvent(c.dataset.id); return;
+  }
   const d = ev.target.closest("[data-day]");
   if (d) { state.day = d.dataset.day; renderCalendar(); return; }
   if (ev.target.id === "overlay") closeEvent();

@@ -9,7 +9,7 @@ Le site public est la page statique du dossier `site/`, publiée par Netlify (r�
 Pour ajouter ou corriger un événement :
 
 1. Modifier `data/events.json`.
-2. Lancer `python3 scripts/build_site.py` (reconstruit `site/index.html` à partir de `site-src/template.html`).
+2. Lancer `python3 scripts/build_site.py` : reconstruit l'accueil, une page par événement, par ville, par catégorie et par mois, et le plan du site pour Google.
 3. Envoyer la modification sur `main`.
 
 Les dossiers ci-dessous sont la version complète (base de données, robot de veille, back-office), à brancher plus tard.
