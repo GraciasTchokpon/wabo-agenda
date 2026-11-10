@@ -13,7 +13,7 @@ from pathlib import Path
 SITE_URL = "https://wabo-agenda.netlify.app/"
 # Code de validation Google Search Console (balise meta « google-site-verification »).
 # Laisser vide tant qu'il n'est pas fourni.
-GOOGLE_VERIFICATION = ""
+GOOGLE_VERIFICATION = "1Yo3GwoEvlcCx2ERLPvAdntEuufmnTcifN98eOCaEmU"
 
 ROOT = Path(__file__).resolve().parent.parent
 template = (ROOT / "site-src" / "template.html").read_text(encoding="utf-8")
