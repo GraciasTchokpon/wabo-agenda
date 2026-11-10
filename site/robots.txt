@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://wabo-agenda.netlify.app/sitemap.xml
