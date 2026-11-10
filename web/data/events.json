@@ -209,7 +209,7 @@
   "free": false,
   "tbc": false,
   "description": "Pré-événement du Next Fintech Forum, consacré aux actifs numériques en Afrique de l'Ouest francophone : régulateurs, institutions financières, fintechs et investisseurs.",
-  "link": null,
+  "link": "https://docs.google.com/forms/d/e/1FAIpQLSeY9cYERNP5sGGxT0oUFNHeerh26zMYTgc-4si4HDXmFkqxfg/viewform",
   "sources": [
    {
     "label": "Financial Afrik – agenda",
@@ -384,6 +384,27 @@
    {
     "label": "Benin Web TV – Tiakola",
     "url": "https://beninwebtv.bj/benin-tiakola-annonce-a-cotonou-le-27-decembre-pour-sa-tournee-africaine/"
+   }
+  ]
+ },
+ {
+  "id": "weloveya-after-party-2026",
+  "title": "WeLovEya After Party",
+  "category": "soiree",
+  "start": "2026-12-29",
+  "end": "2026-12-29",
+  "time": "20:00",
+  "city": "Cotonou",
+  "place": "Sofitel Cotonou Marina Hotel & Spa, boulevard de la Marina",
+  "price": "Tables de 500 000 à 3 500 000 FCFA",
+  "free": false,
+  "tbc": false,
+  "description": "Soirée qui prolonge le festival WeLovEya, de 20 h à 3 h du matin au Sofitel Cotonou. Réservation par tables sur la billetterie Event Bénin.",
+  "link": "https://event.bj/",
+  "sources": [
+   {
+    "label": "Event Bénin – billetterie",
+    "url": "https://event.bj/"
    }
   ]
  },
