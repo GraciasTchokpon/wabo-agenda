@@ -20,6 +20,26 @@
   ]
  },
  {
+  "id": "s2im-2026",
+  "title": "S2im 2026 – Salon international de l'immobilier et des matériaux modernes",
+  "category": "salon",
+  "start": "2026-11-09",
+  "end": "2026-11-16",
+  "city": "Cotonou",
+  "place": "Cotonou – lieu à préciser",
+  "price": "Non communiqué",
+  "free": false,
+  "tbc": false,
+  "description": "Dixième édition du salon de l'immobilier : la phase d'exposition réunit professionnels du bâtiment, industriels, promoteurs immobiliers et grand public autour des solutions pour construire durablement face aux aléas climatiques.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Le Matinal, 9 nov. 2026",
+    "url": "https://lematinal.bj/expositions-s2im-2026-un-levier-pour-dynamiser-les-echanges-commerciaux/"
+   }
+  ]
+ },
+ {
   "id": "airbadminton-international-2026",
   "title": "Bénin AirBadminton International 2026",
   "category": "sport",
@@ -88,6 +108,31 @@
   ]
  },
  {
+  "id": "journee-verte-2026",
+  "title": "Journée verte – Village Vert du paysage",
+  "category": "salon",
+  "start": "2026-11-13",
+  "end": "2026-11-14",
+  "time": "09:00",
+  "city": "Cotonou",
+  "place": "Esplanade du Palais des Congrès, Cotonou",
+  "price": "Gratuit",
+  "free": true,
+  "tbc": false,
+  "description": "Première Journée verte de l'Agence nationale du paysage : un village de près de 10 000 m² pour découvrir les métiers du paysage, avec expositions, démonstrations, panels et ateliers pour les enfants. Le samedi 14 novembre, finale de Green Social puis soirée festive avec hypemen, percussions et DJ sets.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Le Matinal, 11 nov. 2026",
+    "url": "https://lematinal.bj/journee-verte-a-cotonou-deux-jours-dactivites-gratuites-au-palais-des-congres/"
+   },
+   {
+    "label": "Le Matinal, 10 nov. 2026",
+    "url": "https://lematinal.bj/journee-verte-un-village-vert-de-10-000-m%C2%B2-ouvert-au-public-a-cotonou/"
+   }
+  ]
+ },
+ {
   "id": "cyber-africa-forum-2026",
   "title": "Cyber Africa Forum 2026",
   "category": "conference",
@@ -144,7 +189,7 @@
   "price": "Gratuit, sur inscription en ligne",
   "free": true,
   "tbc": false,
-  "description": "Le volet grand public de la Benin Digital & Innovation Week, organisée par le ministère de la Transformation digitale et de l'Innovation. De 10 h à 21 h : démarches administratives en direct avec l'ANIP, atelier robotique et recyclage, studio radio et podcast, musée immersif en réalité virtuelle (palais royaux d'Abomey, cosmogonie vodun), pavillons santé, agriculture et entrepreneuriat, projections de films béninois. Entrée avec QR code, navettes électriques.",
+  "description": "Pendant trois jours, de 10 h à 21 h, l'esplanade du Palais des Congrès devient une petite ville intelligente où le grand public peut tester des solutions numériques et technologiques. Le village est porté par le ministère de la Transformation digitale et de l'Innovation, dans le cadre de la Benin Digital & Innovation Week.",
   "link": null,
   "sources": [
    {
@@ -218,6 +263,26 @@
   ]
  },
  {
+  "id": "africa-expert-summit-2026",
+  "title": "Africa Expert Summit 2026",
+  "category": "conference",
+  "start": "2026-11-26",
+  "end": "2026-11-27",
+  "city": "Cotonou",
+  "place": "Sofitel Cotonou Marina Hotel & Spa",
+  "price": "Sur inscription",
+  "free": false,
+  "tbc": false,
+  "description": "Première édition d'un sommet de formation et de réseautage pour dirigeants d'entreprises africaines : 16 intervenants internationaux et plus de 600 délégués attendus pendant 48 heures de travaux en français et en anglais.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Matin Libre, 9 oct. 2026",
+    "url": "https://matinlibre.com/2026/10/09/africa-expert-summit-2026-a-cotonou-le-rendez-vous-des-dirigeants-africains-qui-veulent-changer-dechelle/"
+   }
+  ]
+ },
+ {
   "id": "next-fintech-forum-2026",
   "title": "Next Fintech Forum 2026",
   "category": "conference",
@@ -264,13 +329,17 @@
   "start": "2026-12-01",
   "end": "2026-12-06",
   "city": "Cotonou · Abomey-Calavi · Parakou",
-  "place": "Cotonou, Abomey-Calavi et Parakou – lieux détaillés à venir",
-  "price": "Non communiqué",
+  "place": "Palais des Congrès et Dôme Sofitel (Cotonou), Espace Mayton (Abomey-Calavi), Institut français",
+  "price": "Gratuit (Tremplin du rire, Village du rire) · galas payants",
   "free": false,
   "tbc": false,
-  "description": "Deuxième édition du festival international d'humour porté par le gouvernement béninois et JokeNation (Montreux Comedy). Au programme : soirée Panaf Comedy Club, Rencontres de l'humour africain, spectacle du Tremplin du rire, Gala Sacrées Amazones, Gala à deux, Village du rire et soirée de clôture. Programme détaillé par jour et billetterie à publier.",
+  "description": "Deuxième édition du festival d'humour porté par le gouvernement béninois et JokeNation (Montreux Comedy). Côté gratuit : le Tremplin du rire le jeudi 3 décembre à 17 h 30 à l'Espace Mayton d'Abomey-Calavi, puis le Village du rire les 4 et 5 décembre sur le parvis du Palais des Congrès. Les galas payants se jouent dans la salle rouge du Palais des Congrès, dont le Gala Sacrées Amazones le vendredi 4 décembre ; clôture le dimanche 6 décembre au Dôme Sofitel.",
   "link": "https://cotonoucomedy.com/",
   "sources": [
+   {
+    "label": "Benin Web TV, 11 nov. 2026 – programme",
+    "url": "https://beninwebtv.bj/cotonou-comedy-festival-2026-spectacles-gratuits-galas/"
+   },
    {
     "label": "Gouvernement du Bénin, 9 nov. 2026",
     "url": "https://www.gouv.bj/article/3737/cotonou-comedy-festival-2026-benin-renforce-ambition-faire-humour-veritable-industrie-culturelle-cotonou-abomey-calavi-parakou-accueille-activites-decembre-2026-/"
