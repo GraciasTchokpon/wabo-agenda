@@ -4,7 +4,8 @@
 [build]
   base = ""
   publish = "site"
-  command = "echo 'Site statique, rien à compiler'"
+  # Site statique déjà construit : on prévient seulement Bing des pages (IndexNow).
+  command = "python3 scripts/indexnow.py || true"
 
 [[headers]]
   for = "/*"

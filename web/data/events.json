@@ -120,7 +120,7 @@
   "free": false,
   "tbc": false,
   "description": "11e rencontre annuelle du réseau panafricain des hubs d'innovation, pour la première fois dans un pays francophone. Thème : « Africa's Innovation Era ». Parcours IA et données, santé, économie créative numérique, makerspaces, économie verte et bleue, investissement, commerce. Accueillie par le ministère de la Transformation digitale et de l'Innovation.",
-  "link": "https://bit.ly/AAG2026",
+  "link": "https://events.afrilabs.com/events/afrilabs-annual-gathering-2026",
   "sources": [
    {
     "label": "AfriLabs",
@@ -189,7 +189,7 @@
   "free": false,
   "tbc": false,
   "description": "Pendant dix jours, des restaurants de Cotonou proposent des menus spéciaux à prix unique, entre cuisine locale et internationale. Pas de paiement à l'avance ni, en général, de réservation ; la liste des restaurants est publiée par l'organisateur.",
-  "link": "https://cowafweek.com/cotonou-2026/",
+  "link": null,
   "sources": [
    {
     "label": "Site de l'organisateur",
@@ -229,7 +229,7 @@
   "free": false,
   "tbc": false,
   "description": "Huitième édition du rendez-vous fintech d'Afrique francophone, avec plus de 500 décideurs attendus. Thème : « De l'adoption à la valeur : industrialiser la fintech pour accélérer la croissance de l'UEMOA ».",
-  "link": "https://www.nextfintechforum.com",
+  "link": null,
   "sources": [
    {
     "label": "Financial Afrik – agenda",
@@ -355,7 +355,7 @@
   "free": false,
   "tbc": false,
   "description": "Édition inaugurale d'un festival franco-canado-béninois sur quatre sites : e-gaming, patrimoine vodun, masterclasses afro, arts vivants et conte. Grande soirée de clôture le 29 décembre au Pura Vida, à Cotonou (pass VIP 18 000 FCFA).",
-  "link": "https://art-hum.org/lefestivales.php",
+  "link": null,
   "sources": [
    {
     "label": "Site du festival",
@@ -399,8 +399,8 @@
   "price": "Tables de 500 000 à 3 500 000 FCFA",
   "free": false,
   "tbc": false,
-  "description": "Soirée qui prolonge le festival WeLovEya, de 20 h à 3 h du matin au Sofitel Cotonou. Réservation par tables sur la billetterie Event Bénin.",
-  "link": "https://event.bj/",
+  "description": "Soirée qui prolonge le festival WeLovEya, de 20 h à 3 h du matin au Sofitel Cotonou. Réservation par tables auprès de la billetterie Event Bénin (event.bj).",
+  "link": null,
   "sources": [
    {
     "label": "Event Bénin – billetterie",

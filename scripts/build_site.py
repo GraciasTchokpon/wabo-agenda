@@ -282,6 +282,12 @@ for sub in ("evenements", "ville", "categorie", "agenda", "assets"):
     shutil.rmtree(SITE / sub, ignore_errors=True)
 (SITE / "assets").mkdir(parents=True)
 shutil.copy(ROOT / "site-src" / "pages.css", SITE / "assets" / "pages.css")
+# Clé IndexNow (Bing) : le fichier doit être servi à la racine du site
+_key = (ROOT / "site-src" / "indexnow-key.txt").read_text().strip()
+for old in SITE.glob("*.txt"):
+    if old.name != "robots.txt":
+        old.unlink()
+(SITE / f"{_key}.txt").write_text(_key, encoding="utf-8")
 
 # ---------- Pages événement ----------
 

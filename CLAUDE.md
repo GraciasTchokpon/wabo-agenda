@@ -42,6 +42,11 @@ Le site public est la page statique `site/`, publiée par Netlify à chaque envo
   Matin Libre, La Nouvelle Tribune, Banouto, 24 Heures au Bénin…), billetterie officielle.
 - Date, lieu ou prix incertains : le dire (« lieu à préciser », « Non communiqué ») ou mettre
   `tbc: true`. Ne jamais inventer.
+- Lien `link` (bouton « S'inscrire / billetterie ») : uniquement la page officielle d'inscription
+  ou de billetterie **de cet événement précis**, ouverte et vérifiée (WebFetch) : elle doit
+  afficher le bon nom et les bonnes dates. Jamais de lien raccourci (bit.ly…), jamais la page
+  d'accueil d'une billetterie ou d'un site, jamais une adresse devinée. En cas de doute :
+  `"link": null` (la fiche garde ses sources).
 - Éviter les doublons : comparer avec les événements existants (même nom, même date).
   Mettre à jour la fiche existante plutôt que d'en créer une seconde.
 - Ne pas supprimer les événements passés : le site les classe tout seul dans « Déjà passés ».
