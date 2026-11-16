@@ -333,7 +333,7 @@
   "price": "Gratuit (Tremplin du rire, Village du rire) · galas payants",
   "free": false,
   "tbc": false,
-  "description": "Deuxième édition du festival d'humour porté par le gouvernement béninois et JokeNation (Montreux Comedy). Côté gratuit : le Tremplin du rire le jeudi 3 décembre à 17 h 30 à l'Espace Mayton d'Abomey-Calavi, puis le Village du rire les 4 et 5 décembre sur le parvis du Palais des Congrès. Les galas payants se jouent dans la salle rouge du Palais des Congrès, dont le Gala Sacrées Amazones le vendredi 4 décembre ; clôture le dimanche 6 décembre au Dôme Sofitel.",
+  "description": "Deuxième édition du festival d'humour porté par le gouvernement béninois et JokeNation (Montreux Comedy). Côté gratuit : les Rencontres de l'humour africain les 2 et 3 décembre à l'Institut français (sur inscription), le Tremplin du rire le jeudi 3 décembre à 17 h 30 à l'Espace Mayton d'Abomey-Calavi, puis le Village du rire les 4 et 5 décembre sur le parvis du Palais des Congrès. Les galas payants se jouent dans la salle rouge du Palais des Congrès : Gala Sacrées Amazones le vendredi 4 décembre, puis « Gala pour deux » le samedi 5 décembre avec Oualas, Moussa Petit Sergent, Gros & Métis et Sam du Barça. Clôture le dimanche 6 décembre au Dôme Sofitel.",
   "link": "https://cotonoucomedy.com/",
   "sources": [
    {
@@ -347,6 +347,10 @@
    {
     "label": "lamétéo.info",
     "url": "https://www.lameteo.info/benin-le-cotonou-comedy-festival-revient-pour-6-jours-dhumour-a-cotonou-abomey-calavi-et-parakou/"
+   },
+   {
+    "label": "Banouto, 11 nov. 2026",
+    "url": "https://www.banouto.bj/culture/article/20261111-cotonou-comedy-festival-2026-ce-qu-il-faut-retenir-de-la-2e-edition-programmee-dans-03-villes"
    }
   ]
  },
@@ -368,6 +372,10 @@
    {
     "label": "Benin Web TV",
     "url": "https://beninwebtv.bj/tayc-relie-cotonou-et-abidjan-dans-son-africa-tour-2026/"
+   },
+   {
+    "label": "Benin Web TV (EN), 2 oct. 2026 – dates de la tournée",
+    "url": "https://beninwebtv.com/en/tayc-connects-cotonou-and-abidjan-on-his-africa-tour-2026/"
    }
   ]
  },
@@ -388,6 +396,27 @@
    {
     "label": "Kanbio24",
     "url": "https://kanbio24.info/actu/festival-feminart-2026-le-comite-dorganisation-devoile-les-grandes-lignes-de-la-4eme-edition/"
+   }
+  ]
+ },
+ {
+  "id": "escapade-royale-ouidah-2026",
+  "title": "Escapade royale Ouidah 2026",
+  "category": "soiree",
+  "start": "2026-12-11",
+  "end": "2026-12-12",
+  "time": "20:00",
+  "city": "Ouidah",
+  "place": "Prestige Klass Bar (vendredi) puis plage de Djègbadji, Ouidah (samedi)",
+  "price": "12 000 FCFA sans hébergement · 25 000 FCFA avec hébergement · 35 000 FCFA le couple",
+  "free": false,
+  "tbc": false,
+  "description": "Un week-end de détente à Ouidah, entre gastronomie, culture et plage. Le vendredi soir, dîner à partir de 20 h au Prestige Klass Bar puis « Soirée Gangan » aux rythmes du tambour traditionnel dès 23 h. Le samedi, sport au réveil, petit-déjeuner, causerie puis « Brunch Tradition Beach » avec jeux sur la plage de Djègbadji. Organisé par Le Coin des Repas Succulents ; places limitées.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Le Matinal, 13 nov. 2026",
+    "url": "https://lematinal.bj/escapade-royale-ouidah-2026-deux-jours-de-gastronomie-de-culture-et-de-detente-annonces-en-decembre/"
    }
   ]
  },
@@ -494,6 +523,10 @@
    {
     "label": "Benin Web TV",
     "url": "https://beninwebtv.bj/benin-le-gouvernement-beninois-precise-les-raisons-de-la-prolongation-des-vodun-days-2027-a-ouidah/"
+   },
+   {
+    "label": "Banouto, 4 août 2026 – dates officielles",
+    "url": "https://www.banouto.bj/culture/article/20260804-vodun-days-2027-au-benin-le-festival-prevu-du-2-au-9-janvier-a-ouidah"
    }
   ]
  }
