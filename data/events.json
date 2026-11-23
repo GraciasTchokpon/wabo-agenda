@@ -1,5 +1,25 @@
 [
  {
+  "id": "exposition-case-nomade-2026",
+  "title": "Exposition « Case Nomade, Porto-Novo, on est là ! Ici aussi ! »",
+  "category": "culture",
+  "start": "2026-11-05",
+  "end": "2027-02-24",
+  "city": "Cotonou",
+  "place": "Résidence de l'ambassadeur de l'Union européenne, Cotonou",
+  "price": "Non communiqué",
+  "free": false,
+  "tbc": false,
+  "description": "Sept artistes du collectif Case Nomade de Porto-Novo exposent leurs créations dans le cadre du projet « Carte blanche à Case Nomade ». Après le vernissage du 5 novembre, l'exposition se visite tous les mercredis de 15 h à 17 h jusqu'au 24 février 2027 ; renseignez-vous auprès de la Délégation de l'UE avant de vous déplacer.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Benin Web TV, 6 nov. 2026",
+    "url": "https://beninwebtv.bj/vernissage-a-la-residence-de-lambassadeur-de-lue-a-cotonou-sept-artistes-exposent-leurs-creations/"
+   }
+  ]
+ },
+ {
   "id": "festival-sica-2026",
   "title": "Festival SICA – 20e édition",
   "category": "festival",
@@ -243,6 +263,48 @@
   ]
  },
  {
+  "id": "concert-yann-clery-yewhe-yeton-2026",
+  "title": "Concert – Yann Cléry & Yewhé Yéton",
+  "category": "concert",
+  "start": "2026-11-24",
+  "end": "2026-11-24",
+  "time": "18:30",
+  "city": "Cotonou",
+  "place": "Paillote de l'Institut français du Bénin, Cotonou",
+  "price": "Gratuit",
+  "free": true,
+  "tbc": false,
+  "description": "Le musicien guyanais Yann Cléry retrouve le chanteur et percussionniste béninois Yewhé Yéton pour une création née de résidences à Marseille et à Ouidah. Un dialogue entre musiques de Guyane et rythmes du Bénin, en entrée libre.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Institut français du Bénin – agenda, nov. 2026",
+    "url": "https://if-benin.com/agenda-culturel/concert-yann-clery-yewhe-yeton/"
+   }
+  ]
+ },
+ {
+  "id": "lecture-james-noel-paons-2026",
+  "title": "Lecture musicale – James Noël : PAONS",
+  "category": "culture",
+  "start": "2026-11-24",
+  "end": "2026-11-24",
+  "time": "16:00",
+  "city": "Abomey-Calavi",
+  "place": "Bibliothèque Bénin Excellence, campus de l'IITA",
+  "price": "Gratuit",
+  "free": true,
+  "tbc": false,
+  "description": "Le poète haïtien James Noël lit des textes de son recueil PAONS, avec le compositeur Guillaume Hazebrouck. Une rencontre entre poésie, jazz et hip-hop, proposée par l'Institut français du Bénin. Entrée libre.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Institut français du Bénin – agenda, nov. 2026",
+    "url": "https://if-benin.com/agenda-culturel/lecture-musicale-james-noel-paons-2/"
+   }
+  ]
+ },
+ {
   "id": "africa-blockchain-crypto-conference-2026",
   "title": "Africa Blockchain & Crypto Conference 2026",
   "category": "conference",
@@ -259,6 +321,27 @@
    {
     "label": "Financial Afrik – agenda",
     "url": "https://www.financialafrik.com/agenda/cotonou-lafrica-blockchain-crypto-conference-2026/"
+   }
+  ]
+ },
+ {
+  "id": "basketteuses-de-bamako-2026",
+  "title": "Basketteuses de Bamako – festival Cirque en Fusion",
+  "category": "culture",
+  "start": "2026-11-25",
+  "end": "2026-11-25",
+  "time": "18:30",
+  "city": "Cotonou",
+  "place": "Théâtre de verdure de l'Institut français du Bénin, Cotonou",
+  "price": "5 000 FCFA (1 000 FCFA adhérents)",
+  "free": false,
+  "tbc": false,
+  "description": "Sept basketteuses maliennes mêlent dribbles, jonglages, chants et musique dans un spectacle de cirque, présenté pour la 3e édition du festival Cirque en Fusion. Billets à l'accueil de l'Institut français ou via la réservation indiquée sur sa page.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Institut français du Bénin – fiche du spectacle, mise à jour 17 nov. 2026",
+    "url": "https://if-benin.com/agenda-culturel/basketteuses-de-bamako/"
    }
   ]
  },
@@ -283,6 +366,27 @@
   ]
  },
  {
+  "id": "afterwork-mi-kwabo-club-26-novembre-2026",
+  "title": "Afterwork Mi Kwabo Club – DJ Cadeto & Wenless",
+  "category": "soiree",
+  "start": "2026-11-26",
+  "end": "2026-11-26",
+  "time": "18:00",
+  "city": "Cotonou",
+  "place": "Brasserie de l'Institut français du Bénin, Cotonou",
+  "price": "Gratuit",
+  "free": true,
+  "tbc": false,
+  "description": "L'afterwork du jeudi revient à l'Institut français après deux semaines de pause : jeux de société, musique et DJ Cadeto aux platines, avec Wenless en découverte. Entrée libre.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Institut français du Bénin – agenda, nov. 2026",
+    "url": "https://if-benin.com/agenda-culturel/afterwork-mikwabo-club-avec-dj-cadeto-wenless/"
+   }
+  ]
+ },
+ {
   "id": "next-fintech-forum-2026",
   "title": "Next Fintech Forum 2026",
   "category": "conference",
@@ -299,6 +403,27 @@
    {
     "label": "Financial Afrik – agenda",
     "url": "https://www.financialafrik.com/agenda/cotonou-8%E1%B5%89-edition-du-next-fintech-forum-2026/"
+   }
+  ]
+ },
+ {
+  "id": "atelier-fragments-hybrides-2026",
+  "title": "Atelier – Fragments hybrides : créer entre héritage, présent et futur",
+  "category": "atelier",
+  "start": "2026-11-28",
+  "end": "2026-11-28",
+  "time": "15:00",
+  "city": "Cotonou",
+  "place": "Médiathèque de l'Institut français du Bénin, Cotonou",
+  "price": "Gratuit, sur inscription",
+  "free": true,
+  "tbc": false,
+  "description": "Atelier numérique animé par Steven Houessou-Adin : chaque participant réinterprète des fragments personnels et culturels avec l'IA générative pour composer une galerie web. Gratuit, inscription obligatoire auprès de la médiathèque.",
+  "link": null,
+  "sources": [
+   {
+    "label": "Institut français du Bénin – agenda, nov. 2026",
+    "url": "https://if-benin.com/agenda-culturel/atelier-fragments-hybrides-creer-entre-heritage-present-et-futur/"
    }
   ]
  },
@@ -351,6 +476,10 @@
    {
     "label": "Banouto, 11 nov. 2026",
     "url": "https://www.banouto.bj/culture/article/20261111-cotonou-comedy-festival-2026-ce-qu-il-faut-retenir-de-la-2e-edition-programmee-dans-03-villes"
+   },
+   {
+    "label": "Le Matinal, 11 nov. 2026",
+    "url": "https://lematinal.bj/2e-edition-du-cotonou-comedy-festival-renforcer-la-place-du-benin-sur-la-carte-de-lhumour-africain/"
    }
   ]
  },
